@@ -6,6 +6,11 @@ Select_character::Select_character(Game* game)
 
 }
 
+void Select_character::Create()
+{
+
+}
+
 void Select_character::Init()
 {
 
@@ -14,14 +19,16 @@ void Select_character::Init()
 void Select_character::Draw()
 {
 	clear();
-	fill(255);
-	print("SELECT CHARA");
-
+	rectMode(CORNER);
+	print("Select character");
 }
 
 void Select_character::NextScene()
 {
 	if (isTrigger(KEY_SPACE)) {
 		GetGame()->ChangeScene(GetGame()->EPStage);
+	}
+	if (isTrigger(KEY_P)) {
+		GetGame()->ChangeScene(GetGame()->ESStage);
 	}
 }

@@ -14,10 +14,11 @@
     <Filter Include="Manager">
       <UniqueIdentifier>{4a288c31-9778-45d1-be8f-aaad16bdde3d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Actor">
+      <UniqueIdentifier>{d2d33000-f820-49b9-9c80-cf0672084f53}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Play_game.cpp" />
-    <ClCompile Include="Player.cpp" />
     <ClCompile Include="main.cpp">
       <Filter>Manager</Filter>
     </ClCompile>
@@ -42,6 +43,12 @@
     <ClCompile Include="Title.cpp">
       <Filter>Scene</Filter>
     </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="Play_game.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="resource.rc">
@@ -49,8 +56,6 @@
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Play_game.h" />
-    <ClInclude Include="Player.h" />
     <ClInclude Include="Game_object.h">
       <Filter>Manager</Filter>
     </ClInclude>
@@ -70,6 +75,12 @@
       <Filter>Scene</Filter>
     </ClInclude>
     <ClInclude Include="Title.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="Play_game.h">
       <Filter>Scene</Filter>
     </ClInclude>
   </ItemGroup>

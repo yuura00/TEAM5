@@ -12,6 +12,7 @@ void Container::Load()
 
 void Container::Set_data()
 {
+	//Title data
 	Data.title.ImgPos = VECTOR2(0, 0);
 	Data.title.ImgSize = 3.0f;
 	Data.title.DFilter = 170;
@@ -32,10 +33,19 @@ void Container::Set_data()
 	Data.title.sw[1][1] = 4;//option
 	Data.title.sw[1][2] = 5;//quit
 
+	//select stage data
+	
+	Data.sStage.SelectIconPos = VECTOR2(0,69);
+	Data.sStage.OffSetX = 0;
+	
+	Data.sStage.SelectSw = 0;
+	Data.sStage.StageNum = 3;
+	Data.sStage.OffSetW = 654;
 }
 
 void Container::Load_graphic()
 {
 	Data.title.TitleImg = loadImage("assets\\Title.png");
-
+	Data.sStage.BackImg = loadImage("assets\\StageSelect_v2.png");
+	Data.sStage.SelectIconImg = loadImage("assets\\Select_Icon.png");
 }
