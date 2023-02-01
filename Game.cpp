@@ -26,7 +26,10 @@ bool Game::Initialize()
 void Game::RunLoop()
 {
 	GetContainer()->Load();
-	Scenes[ETitle]->Create();
+	for (int i = 0; i < State_num; i++) {
+		Scenes[i]->Create();
+
+	}
 	while (notQuit)
 	{
 		ProcessInput();
