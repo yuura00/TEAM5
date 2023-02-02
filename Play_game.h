@@ -18,6 +18,6 @@ public:
     void NextScene();
 private:
     int Play_gameImg = 0;
-    State* GameState[State_num];
+    class Play_game* GameState[State_num];
     State CurState;
 };

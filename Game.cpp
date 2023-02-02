@@ -41,8 +41,9 @@ void Game::RunLoop()
 void Game::Shutdown()
 {
 	for (int i = 0; i < State_num; i++) {
-		SAFE_DELETE(Scenes[ETitle]);
+		SAFE_DELETE(Scenes[i]);
 	}
+	SAFE_DELETE(PContainer);
 	closeWindow();
 
 }

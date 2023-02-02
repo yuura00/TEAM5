@@ -40,12 +40,12 @@ void Container::Set_data()
 	
 	Data.sStage.SelectSw = 0;
 	Data.sStage.StageNum = 3;
-	Data.sStage.OffSetW = 654;
+	Data.sStage.OffSetW = 640;
 }
 
 void Container::Load_graphic()
 {
 	Data.title.TitleImg = loadImage("assets\\Title.png");
-	Data.sStage.BackImg = loadImage("assets\\StageSelect_v2.png");
-	Data.sStage.SelectIconImg = loadImage("assets\\Select_Icon.png");
+	Data.sStage.BackImg = loadImage("assets\\stageSelect_v3_a.png");
+	Data.sStage.SelectIconImg = loadImage("assets\\Select_Icon_v2_a.png");
 }
