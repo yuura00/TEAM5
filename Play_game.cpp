@@ -11,6 +11,8 @@ Play_game::Play_game(Game* game)
 
 void Play_game::Init()
 {
+	CurState = EPlaying;
+
 
 }
 
