@@ -6,19 +6,24 @@
 #include"Title.h"
 #include"Select_stage.h"
 #include"Select_character.h"
-#include"Play_game.h"
+#include"Playing_game.h"
+#include"Pause_game.h"
 #include"Container.h"
 bool Game::Initialize()
 {
 	window(1920, 1080,full);
 	//container
 	PContainer = new Container;
+
+	
 	//scene create
 	Scenes[ETitle] = new Title(this);
 	Scenes[ESStage] = new Select_stage(this);
 	Scenes[ESChara] = new Select_character(this);
-	Scenes[EPStage] = new Play_game(this);
-
+	Scenes[EPlaying] = new Playing_game(this);
+	Scenes[EPauseGame] = new Pause_game(this);
+	
+	
 	CurState = ETitle;
 	return true;
 }
@@ -68,3 +73,9 @@ void Game::ChangeScene(State scene)
 	CurState = scene;
 	Scenes[CurState]->Init();
 }
+
+void Game::ChangeState(State state)
+{
+	CurState = state;
+}
+
