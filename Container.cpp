@@ -48,4 +48,5 @@ void Container::Load_graphic()
 	Data.title.TitleImg = loadImage("assets\\Title.png");
 	Data.sStage.BackImg = loadImage("assets\\stageSelect_v3_a.png");
 	Data.sStage.SelectIconImg = loadImage("assets\\Select_Icon_v2_a.png");
+	Data.playingGame.BackGroundStageNo1 = loadImage("assets\\ConceptArt.png");
 }

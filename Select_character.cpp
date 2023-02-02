@@ -26,7 +26,7 @@ void Select_character::Draw()
 void Select_character::NextScene()
 {
 	if (isTrigger(KEY_SPACE)) {
-		GetGame()->ChangeScene(GetGame()->EPStage);
+		GetGame()->ChangeScene(GetGame()->EPlaying);
 	}
 	if (isTrigger(KEY_P)) {
 		GetGame()->ChangeScene(GetGame()->ESStage);

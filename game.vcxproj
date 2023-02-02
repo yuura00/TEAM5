@@ -138,8 +138,9 @@
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Game_object.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Pause_game.cpp" />
     <ClCompile Include="Player.cpp" />
-    <ClCompile Include="Play_game.cpp" />
+    <ClCompile Include="Playing_game.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="Select_character.cpp" />
     <ClCompile Include="Select_stage.cpp" />
@@ -157,8 +158,9 @@
     <ClInclude Include="Container.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="Game_object.h" />
+    <ClInclude Include="Pause_game.h" />
     <ClInclude Include="Player.h" />
-    <ClInclude Include="Play_game.h" />
+    <ClInclude Include="Playing_game.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="Select_character.h" />
     <ClInclude Include="Select_stage.h" />
