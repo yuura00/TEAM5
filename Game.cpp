@@ -9,6 +9,8 @@
 #include"Playing_game.h"
 #include"Pause_game.h"
 #include"Container.h"
+#include"Player.h"
+#include"Map.h"
 bool Game::Initialize()
 {
 	window(1920, 1080,full);
@@ -23,7 +25,9 @@ bool Game::Initialize()
 	Scenes[EPlaying] = new Playing_game(this);
 	Scenes[EPauseGame] = new Pause_game(this);
 	
-	
+	//material
+	PPlayer = new Player(this);
+	PMap = new Map(this);
 	CurState = ETitle;
 	return true;
 }
@@ -35,6 +39,8 @@ void Game::RunLoop()
 		Scenes[i]->Create();
 
 	}
+	PPlayer->Create();
+	PMap->Create();
 	while (notQuit)
 	{
 		ProcessInput();
@@ -49,6 +55,7 @@ void Game::Shutdown()
 		SAFE_DELETE(Scenes[i]);
 	}
 	SAFE_DELETE(PContainer);
+	SAFE_DELETE(PPlayer)
 	closeWindow();
 
 }

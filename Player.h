@@ -11,7 +11,9 @@ public:
 
         VECTOR2 Pos;
         VECTOR2 Vec;
-        VECTOR2 Speed;
+        float Speed;
+        float HalfSizeW;
+        float HalfSizeH;
         int Hp;
 
 

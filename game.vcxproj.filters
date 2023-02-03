@@ -48,6 +48,7 @@
     </ClCompile>
     <ClCompile Include="Playing_game.cpp" />
     <ClCompile Include="Pause_game.cpp" />
+    <ClCompile Include="Map.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="resource.rc">
@@ -81,5 +82,6 @@
     </ClInclude>
     <ClInclude Include="Playing_game.h" />
     <ClInclude Include="Pause_game.h" />
+    <ClInclude Include="Map.h" />
   </ItemGroup>
 </Project>

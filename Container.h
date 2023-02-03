@@ -4,6 +4,7 @@
 #include"Select_stage.h"
 #include"Player.h"
 #include"Playing_game.h"
+#include"Map.h"
 class Container 
 {
 private:
@@ -13,6 +14,7 @@ private:
         Playing_game::Data playingGame;
 
         Player::Data player;
+        Map::Data map;
     };
     ALL_DATA Data;
 
