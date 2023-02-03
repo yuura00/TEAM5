@@ -5,7 +5,9 @@ class Map :
     public Game_object
 {
 public:
+    bool CheckError = false;
     struct Data {
+        
         int BackGroundStageNo1;
         int BackGroundStageNo2;
         int BackGroundStageNo3;
@@ -20,7 +22,10 @@ public:
     void Init();
     void Update();
     void Draw();
+    void SetData();
+    void SaveData();
 private:
     Data DMap;
+    Data DPauseGame;
 };
 

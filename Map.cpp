@@ -9,8 +9,7 @@ void Map::Create()
 
 void Map::Init()
 {
-	DMap.BackGroundPos[1].y = DMap.BackGroundPos[0].y - height + 3;
-	DMap.BackGroundPos[2].y = DMap.BackGroundPos[1].y - height+3;
+	DMap= GetGame()->GetContainer()->GetData().map;
 }
 
 void Map::Update()
@@ -40,3 +39,23 @@ void Map::Draw()
 	}
 	
 }
+
+
+void Map::SetData()
+{
+	if (CheckError == true) {
+		DMap = DPauseGame;
+		CheckError = false;
+	}
+	else {
+		print("ERROR");
+	}
+	
+}
+
+void Map::SaveData()
+{
+	CheckError = true;
+	DPauseGame = DMap;
+}
+
