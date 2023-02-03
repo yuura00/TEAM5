@@ -34,19 +34,31 @@ void Container::Set_data()
 	Data.title.sw[1][2] = 5;//quit
 
 	//select stage data
-	
-	Data.sStage.SelectIconPos = VECTOR2(0,69);
+
+	Data.sStage.SelectIconPos = VECTOR2(0, 69);
 	Data.sStage.OffSetX = 0;
-	
+
 	Data.sStage.SelectSw = 0;
 	Data.sStage.StageNum = 3;
 	Data.sStage.OffSetW = 640;
-}
 
+	//map
+	Data.map.BackGroundPos [0] = VECTOR2(600, 0);
+	Data.map.BackGroundPos[1] = VECTOR2(600, 0);
+	Data.map.BackGroundPos[2] = VECTOR2(600, 0);
+	Data.map.BackGroundImgNum = 3;
+	Data.map.ScrollSpeed = 100;
+
+	//player
+	Data.player.Pos = VECTOR2(width / 2, height - 100);
+	Data.player.HalfSizeW = 75/2.0f;
+	Data.player.HalfSizeH = 75/2.0f;
+	Data.player.Speed = 300;
+}
 void Container::Load_graphic()
 {
 	Data.title.TitleImg = loadImage("assets\\Title.png");
 	Data.sStage.BackImg = loadImage("assets\\stageSelect_v3_a.png");
 	Data.sStage.SelectIconImg = loadImage("assets\\Select_Icon_v2_a.png");
-	Data.playingGame.BackGroundStageNo1 = loadImage("assets\\ConceptArt.png");
+	Data.map.BackGroundStageNo1 = loadImage("assets\\loop_material.png");
 }

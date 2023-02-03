@@ -1,26 +1,40 @@
 #include "Playing_game.h"
 #include"graphic.h"
 #include"input.h"
+#include"window.h"
 #include"Game.h"
 #include"Container.h"
+#include"Player.h"
 void Playing_game::Create()
 {
 	DPlayingGame = GetGame()->GetContainer()->GetData().playingGame;
 }
 
+
 void Playing_game::Init()
 {
+	initDeltaTime();
+
+	GetGame()->GetMap()->Init();
+	GetGame()->GetPlayer()->Init();
+	
 }
 
 void Playing_game::Update()
 {
+	setDeltaTime();
+
+	GetGame()->GetMap()->Update();
+	GetGame()->GetPlayer()->Update();
+
 }
 
 void Playing_game::Draw()
 {
 	clear();
-	rectMode(CENTER);
-	image(DPlayingGame.BackGroundStageNo1, width / 2, height / 2);
+	
+	GetGame()->GetMap()->Draw();
+	GetGame()->GetPlayer()->Draw();
 }
 
 void Playing_game::NextScene()

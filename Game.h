@@ -1,4 +1,5 @@
 #pragma once
+
 class Game
 {
 private:
@@ -21,6 +22,8 @@ private:
 	class Scene* Scenes[State_num];
 	State CurState;
 	
+	class Player* PPlayer;
+	class Map* PMap;
 public:
 	bool Initialize();
 	void RunLoop();
@@ -29,7 +32,8 @@ public:
 	void ChangeState(State state);
 	
 	State GetCurState() { return CurState; }
-
+	class Player* GetPlayer() { return PPlayer; }
+	class Map* GetMap() { return PMap; }
 private:
 	void ProcessInput();
 	void UpdateGame();
