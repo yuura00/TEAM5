@@ -40,6 +40,9 @@ void Playing_game::Draw()
 void Playing_game::NextScene()
 {
 	if (isTrigger(KEY_P)&&GetGame()->GetCurState()!=GetGame()->EPauseGame) {
+		GetGame()->GetPlayer()->SaveData();
+		GetGame()->GetMap()->SaveData();
+		
 		GetGame()->ChangeState(GetGame()->EPauseGame);
 	}
 	if (isTrigger(KEY_Z)) {

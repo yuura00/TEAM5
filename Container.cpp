@@ -44,8 +44,8 @@ void Container::Set_data()
 
 	//map
 	Data.map.BackGroundPos [0] = VECTOR2(600, 0);
-	Data.map.BackGroundPos[1] = VECTOR2(600, 0);
-	Data.map.BackGroundPos[2] = VECTOR2(600, 0);
+	Data.map.BackGroundPos[1] = VECTOR2(600, Data.map.BackGroundPos[0].y - height +3);
+	Data.map.BackGroundPos[2] = VECTOR2(600, Data.map.BackGroundPos[1].y - height + 3);
 	Data.map.BackGroundImgNum = 3;
 	Data.map.ScrollSpeed = 100;
 

@@ -46,9 +46,15 @@
     <ClCompile Include="Player.cpp">
       <Filter>Actor</Filter>
     </ClCompile>
-    <ClCompile Include="Playing_game.cpp" />
-    <ClCompile Include="Pause_game.cpp" />
-    <ClCompile Include="Map.cpp" />
+    <ClCompile Include="Playing_game.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Pause_game.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Map.cpp">
+      <Filter>Actor</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="resource.rc">
@@ -80,8 +86,14 @@
     <ClInclude Include="Player.h">
       <Filter>Actor</Filter>
     </ClInclude>
-    <ClInclude Include="Playing_game.h" />
-    <ClInclude Include="Pause_game.h" />
-    <ClInclude Include="Map.h" />
+    <ClInclude Include="Pause_game.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Playing_game.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Map.h">
+      <Filter>Actor</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

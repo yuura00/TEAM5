@@ -5,6 +5,7 @@ class Player :
     public Game_object
 {
 public:
+    bool CheckError = false;
     struct Data {
         int img = 0;
         float angle = 0;
@@ -16,11 +17,12 @@ public:
         float HalfSizeH;
         int Hp;
 
-
+        
     };
 
 private:
     Data DPlayer;
+    Data DPauseGame;
 public:
     Player(class Game* game);
     ~Player();
@@ -31,6 +33,8 @@ public:
     void Launch();
     void Collision();
     void Draw();
+    void SaveData();
+    void SetData();
     
     VECTOR2 GetPos() { return DPlayer.Pos; }
     int GetHp() { return DPlayer.Hp; }

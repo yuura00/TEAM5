@@ -71,3 +71,21 @@ void Player::Draw()
 	fill(255);
 	rect(DPlayer.Pos.x, DPlayer.Pos.y, DPlayer.HalfSizeW*2, DPlayer.HalfSizeH*2);
 }
+
+void Player::SaveData()
+{
+	CheckError = true;
+	DPauseGame = DPlayer;
+}
+
+void Player::SetData()
+{
+	if (CheckError == true) {
+		DPlayer = DPauseGame;
+		CheckError = false;
+	}
+	else {
+		print("ERROR");
+	}
+}
+
