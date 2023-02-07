@@ -1,7 +1,7 @@
 #pragma once
 #include"Game_object.h"
 #include"graphic.h"
-class Player :
+class Enemy :
     public Game_object
 {
 public:
@@ -11,6 +11,7 @@ public:
         float angle = 0;
 
         VECTOR2 Pos;
+        VECTOR2 Vec;
         VECTOR2 LaunchVec;
         float Speed;
         float HalfSizeW;
@@ -18,28 +19,34 @@ public:
         int Hp;
         float LaunchCoolTime;
         float CurLaunchCoolTime;
-        
+        float MovingCoolTime;
+        float CurMovingCoolTime;
+        float MovingTime;
+        int RandomIndex;
     };
 
 private:
-    Data DPlayer;
+    Data DEnemy;
     Data DPauseGame;
 
 public:
-    Player(class Game* game);
-    ~Player();
+    Enemy(class Game* game);
+    ~Enemy();
     void Create();
     void Init();
     void Update();
     void Move();
+    void RandomMove();
     void Launch();
     void Collision();
     void Draw();
     void SaveData();
     void SetData();
-    
-    VECTOR2 GetPos() { return DPlayer.Pos; }
-    int GetHp() { return DPlayer.Hp; }
-    
+    void Kill();
+
+
+    VECTOR2 GetPos() { return DEnemy.Pos; }
+    int GetHp() { return DEnemy.Hp; }
+
 };
 

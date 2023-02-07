@@ -114,6 +114,7 @@ void Game::CreateScene(State i)
 			if (PauseSw != true) {
 				Scene[EPlaying] = new Playing_game(this);
 				PPlayer = new Player(this);
+				PEnemy = new Enemy(this);
 				PMap = new Map(this);
 				PBullets = new Bullets(this);
 				PPBullets = new Player_bullets(this);

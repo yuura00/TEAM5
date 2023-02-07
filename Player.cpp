@@ -60,8 +60,16 @@ void Player::Move()
 
 void Player::Launch()
 {
-	if (isTrigger(KEY_SPACE)) {
-		GetGame()->GetPBullets()->Launch(DPlayer.Pos,DPlayer.Vec);
+
+	if (isPress(KEY_SPACE)) {
+		DPlayer.CurLaunchCoolTime += delta;
+		if (DPlayer.CurLaunchCoolTime > DPlayer.LaunchCoolTime) {
+			GetGame()->GetPBullets()->Launch(DPlayer.Pos, DPlayer.LaunchVec);
+			DPlayer.CurLaunchCoolTime = 0;
+		}
+	}
+	else {
+		DPlayer.CurLaunchCoolTime = DPlayer.LaunchCoolTime;
 	}
 }
 
@@ -74,7 +82,7 @@ void Player::Draw()
 	rectMode(CENTER);
 	fill(255);
 	
-	rect(DPlayer.Pos.x, DPlayer.Pos.y, DPlayer.HalfSizeW*2, DPlayer.HalfSizeH*2);
+	image(DPlayer.img,DPlayer.Pos.x, DPlayer.Pos.y);
 
 }
 

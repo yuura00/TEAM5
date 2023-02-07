@@ -6,10 +6,12 @@
 #include"Container.h"
 #include"Player.h"
 #include"Player_bullets.h"
+#include"Enemy.h"
 void Playing_game::Create()
 {
 	DPlayingGame = GetGame()->GetContainer()->GetData().playingGame;
 	GetGame()->GetPlayer()->Create();
+	GetGame()->GetEnemy()->Create();
 	GetGame()->GetMap()->Create();
 	
 }
@@ -21,6 +23,7 @@ void Playing_game::Init()
 
 	GetGame()->GetMap()->Init();
 	GetGame()->GetPlayer()->Init();
+	GetGame()->GetEnemy()->Init();
 	GetGame()->GetPBullets()->Init();
 }
 
@@ -30,15 +33,17 @@ void Playing_game::Update()
 
 	GetGame()->GetMap()->Update();
 	GetGame()->GetPlayer()->Update();
+	GetGame()->GetEnemy()->Update();
 	GetGame()->GetPBullets()->Update();
 }
 
 void Playing_game::Draw()
 {
 	clear();
-	
+	print(delta);
 	GetGame()->GetMap()->Draw();
 	GetGame()->GetPlayer()->Draw();
+	GetGame()->GetEnemy()->Draw();
 	GetGame()->GetPBullets()->Draw();
 }
 
