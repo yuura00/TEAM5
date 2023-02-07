@@ -23,6 +23,7 @@ public:
 private:
     Data DPlayer;
     Data DPauseGame;
+
 public:
     Player(class Game* game);
     ~Player();

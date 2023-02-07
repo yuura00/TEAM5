@@ -5,9 +5,13 @@
 #include"Game.h"
 #include"Container.h"
 #include"Player.h"
+#include"Player_bullets.h"
 void Playing_game::Create()
 {
 	DPlayingGame = GetGame()->GetContainer()->GetData().playingGame;
+	GetGame()->GetPlayer()->Create();
+	GetGame()->GetMap()->Create();
+	
 }
 
 
@@ -17,7 +21,7 @@ void Playing_game::Init()
 
 	GetGame()->GetMap()->Init();
 	GetGame()->GetPlayer()->Init();
-	
+	GetGame()->GetPBullets()->Init();
 }
 
 void Playing_game::Update()
@@ -26,7 +30,7 @@ void Playing_game::Update()
 
 	GetGame()->GetMap()->Update();
 	GetGame()->GetPlayer()->Update();
-
+	GetGame()->GetPBullets()->Update();
 }
 
 void Playing_game::Draw()
@@ -35,6 +39,7 @@ void Playing_game::Draw()
 	
 	GetGame()->GetMap()->Draw();
 	GetGame()->GetPlayer()->Draw();
+	GetGame()->GetPBullets()->Draw();
 }
 
 void Playing_game::NextScene()
@@ -43,9 +48,9 @@ void Playing_game::NextScene()
 		GetGame()->GetPlayer()->SaveData();
 		GetGame()->GetMap()->SaveData();
 		
-		GetGame()->ChangeState(GetGame()->EPauseGame);
+		GetGame()->ChangePause(GetGame()->EPauseGame);
 	}
 	if (isTrigger(KEY_Z)) {
-		GetGame()->ChangeState(GetGame()->ESStage);
+		GetGame()->ChangeScene(GetGame()->ESStage);
 	}
 }

@@ -11,6 +11,7 @@
 #include"Container.h"
 #include"Player.h"
 #include"Map.h"
+#include"Player_bullets.h"
 bool Game::Initialize()
 {
 	window(1920, 1080,full);
@@ -19,15 +20,11 @@ bool Game::Initialize()
 
 	
 	//scene create
-	Scenes[ETitle] = new Title(this);
-	Scenes[ESStage] = new Select_stage(this);
-	Scenes[ESChara] = new Select_character(this);
-	Scenes[EPlaying] = new Playing_game(this);
-	Scenes[EPauseGame] = new Pause_game(this);
+	Scene[CurState] = new Title(this);
+	
 	
 	//material
-	PPlayer = new Player(this);
-	PMap = new Map(this);
+	
 	CurState = ETitle;
 	return true;
 }
@@ -35,12 +32,8 @@ bool Game::Initialize()
 void Game::RunLoop()
 {
 	GetContainer()->Load();
-	for (int i = 0; i < State_num; i++) {
-		Scenes[i]->Create();
-
-	}
-	PPlayer->Create();
-	PMap->Create();
+	Scene[CurState]->Create();
+	
 	while (notQuit)
 	{
 		ProcessInput();
@@ -52,10 +45,11 @@ void Game::RunLoop()
 void Game::Shutdown()
 {
 	for (int i = 0; i < State_num; i++) {
-		SAFE_DELETE(Scenes[i]);
+		SAFE_DELETE(Scene[CurState]);
 	}
 	SAFE_DELETE(PContainer);
-	SAFE_DELETE(PPlayer)
+	SAFE_DELETE(PPlayer);
+
 	closeWindow();
 
 }
@@ -67,7 +61,22 @@ void Game::ProcessInput()
 
 void Game::UpdateGame()
 {
-	Scenes[CurState]->Proc();
+	Scene[CurState]->Proc();
+	if (CurState != NextScene) {
+		CreateScene(NextScene);
+		if ((NextScene!=EPauseGame&&NextScene!=EPlaying)&&(CurState==EPlaying||CurState==EPauseGame)) {
+			SAFE_DELETE(PPlayer);
+			SAFE_DELETE(PMap);
+			SAFE_DELETE(PBullets);
+		}
+		CurState = NextScene;
+		
+		if (PauseSw != true) {
+			Scene[CurState]->Create();
+			Scene[CurState]->Init();
+		}
+		PauseSw = false;
+	}
 }
 
 void Game::GenerateOutput()
@@ -75,14 +84,47 @@ void Game::GenerateOutput()
 	
 }
 
-void Game::ChangeScene(State scene)
+void Game::ChangeScene(State nextScene)
 {
-	CurState = scene;
-	Scenes[CurState]->Init();
+	NextScene = nextScene;
 }
 
-void Game::ChangeState(State state)
+//init Ç»ÇµêÿÇËë÷Ç¶
+void Game::ChangePause(State state)
 {
-	CurState = state;
+	NextScene = state;
+	PauseSw = true;
 }
+
+void Game::CreateScene(State i)
+{
+	switch (i) {
+		case ETitle:
+			SAFE_DELETE(Scene[CurState]);
+			Scene[ETitle] = new Title(this);
+		case ESStage:
+			SAFE_DELETE(Scene[CurState]);
+			Scene[ESStage] = new Select_stage(this);
+		case ESChara:
+			SAFE_DELETE(Scene[CurState]);
+			Scene[ESChara] = new Select_character(this);
+		case EPlaying:
+			
+			SAFE_DELETE(Scene[CurState]);
+			if (PauseSw != true) {
+				Scene[EPlaying] = new Playing_game(this);
+				PPlayer = new Player(this);
+				PMap = new Map(this);
+				PBullets = new Bullets(this);
+				PPBullets = new Player_bullets(this);
+			}
+		case EPauseGame:
+			
+			Scene[EPauseGame] = new Pause_game(this);
+			
+	}
+		
+
+}
+
 

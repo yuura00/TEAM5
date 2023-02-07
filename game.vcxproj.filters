@@ -55,6 +55,8 @@
     <ClCompile Include="Map.cpp">
       <Filter>Actor</Filter>
     </ClCompile>
+    <ClCompile Include="Bullets.cpp" />
+    <ClCompile Include="Player_bullets.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="resource.rc">
@@ -95,5 +97,7 @@
     <ClInclude Include="Map.h">
       <Filter>Actor</Filter>
     </ClInclude>
+    <ClInclude Include="Bullets.h" />
+    <ClInclude Include="Player_bullets.h" />
   </ItemGroup>
 </Project>

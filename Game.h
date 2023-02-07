@@ -15,25 +15,33 @@ public:
 		//EGameClear,
 		//EGameOver,
 		State_num
+
 	};
-	
+	bool PauseSw;
+	State NextScene=ETitle;
+	State CurState=ETitle;
 
 private:
-	class Scene* Scenes[State_num];
-	State CurState;
+	class Scene* Scene[State_num];
+	
 	
 	class Player* PPlayer;
 	class Map* PMap;
+	class Bullets* PBullets;
+	class Player_bullets* PPBullets;
 public:
 	bool Initialize();
 	void RunLoop();
 	void Shutdown();
 	void ChangeScene(State scene);
-	void ChangeState(State state);
+	void ChangePause(State state);
+	void CreateScene(State i);
 	
-	State GetCurState() { return CurState; }
+	int GetCurState() { return CurState; }
 	class Player* GetPlayer() { return PPlayer; }
 	class Map* GetMap() { return PMap; }
+	class Bullets* GetBullets() { return PBullets; }
+	class Player_bullets* GetPBullets() { return PPBullets; }
 private:
 	void ProcessInput();
 	void UpdateGame();

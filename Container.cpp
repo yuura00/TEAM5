@@ -51,9 +51,18 @@ void Container::Set_data()
 
 	//player
 	Data.player.Pos = VECTOR2(width / 2, height - 100);
+	Data.player.Vec = VECTOR2 (0, -1);
+	Data.player.Hp = 100;
 	Data.player.HalfSizeW = 75/2.0f;
 	Data.player.HalfSizeH = 75/2.0f;
 	Data.player.Speed = 300;
+
+	Data.playerBullet.TotalNum = 10;
+	Data.playerBullet.CurNum = 0;
+	Data.playerBullet.AdvSpeed = 300;
+	Data.playerBullet.AngSpeed = 0;
+	Data.playerBullet.BcRadius = 30;
+	Data.playerBullet.LaunchDistance = 30;
 }
 void Container::Load_graphic()
 {

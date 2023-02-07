@@ -7,7 +7,7 @@
 #include"Map.h"
 void Pause_game::Create()
 {
-
+	
 }
 
 void Pause_game::Draw()
@@ -25,7 +25,7 @@ void Pause_game::NextScene()
 	if (isTrigger(KEY_Z)) {
 		GetGame()->GetPlayer()->SetData();
 		GetGame()->GetMap()->SetData();
-		GetGame()->ChangeState(GetGame()->EPlaying);
+		GetGame()->ChangePause(GetGame()->EPlaying);
 		setDeltaTime();
 	}
 }

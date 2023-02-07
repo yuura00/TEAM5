@@ -5,6 +5,7 @@
 #include"graphic.h"
 #include"input.h"
 #include"window.h"
+#include"Player_bullets.h"
 Player::Player(Game* game)
 	:Game_object(game)
 {
@@ -17,6 +18,7 @@ Player::~Player()
 void Player::Create()
 {
 	DPlayer = GetGame()->GetContainer()->GetData().player;
+	GetGame()->GetPBullets()->Create();
 }
 
 void Player::Init()
@@ -24,10 +26,12 @@ void Player::Init()
 	const Data& dplayer = GetGame()->GetContainer()->GetData().player;
 	DPlayer.Pos =dplayer.Pos;
 	DPlayer.Hp = dplayer.Hp;
+	
 }
 
 void Player::Update()
 {
+	
 	Move();
 	Launch();
 	Collision();
@@ -57,7 +61,7 @@ void Player::Move()
 void Player::Launch()
 {
 	if (isTrigger(KEY_SPACE)) {
-
+		GetGame()->GetPBullets()->Launch(DPlayer.Pos,DPlayer.Vec);
 	}
 }
 
@@ -69,7 +73,9 @@ void Player::Draw()
 {
 	rectMode(CENTER);
 	fill(255);
+	
 	rect(DPlayer.Pos.x, DPlayer.Pos.y, DPlayer.HalfSizeW*2, DPlayer.HalfSizeH*2);
+
 }
 
 void Player::SaveData()
