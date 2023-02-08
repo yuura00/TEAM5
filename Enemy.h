@@ -26,8 +26,8 @@ public:
     };
 
 private:
-    Data DEnemy;
-    Data DPauseGame;
+    Data DEnemy[3];
+    Data DPauseGame[];
 
 public:
     Enemy(class Game* game);
@@ -45,8 +45,8 @@ public:
     void Kill();
 
 
-    VECTOR2 GetPos() { return DEnemy.Pos; }
-    int GetHp() { return DEnemy.Hp; }
+    VECTOR2 GetPos(int enemyNo) { return DEnemy[enemyNo].Pos; }
+    int GetHp(int enemyNo) { return DEnemy[enemyNo].Hp; }
 
 };
 

@@ -57,7 +57,7 @@ void Bullets::Update()
 void Bullets::Draw()
 {
 	rectMode(CENTER);
-	fill(255,0,0);
+	fill(255);
 	for (int i = 0; i < PBullet.CurNum; i++) {
 		circle(PBullets[i].Pos.x, PBullets[i].Pos.y, PBullet.BcRadius*2);
  	}

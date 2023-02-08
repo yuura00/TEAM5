@@ -64,7 +64,12 @@
     <ClCompile Include="Player_bullets.cpp">
       <Filter>Actor\Bullet</Filter>
     </ClCompile>
-    <ClCompile Include="Enemy.cpp" />
+    <ClCompile Include="Enemy.cpp">
+      <Filter>Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy_bullets.cpp">
+      <Filter>Actor\Bullet</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="resource.rc">
@@ -111,6 +116,11 @@
     <ClInclude Include="Player_bullets.h">
       <Filter>Actor\Bullet</Filter>
     </ClInclude>
-    <ClInclude Include="Enemy.h" />
+    <ClInclude Include="Enemy.h">
+      <Filter>Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy_bullets.h">
+      <Filter>Actor\Bullet</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

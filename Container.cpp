@@ -53,10 +53,10 @@ void Container::Set_data()
 	Data.player.Pos = VECTOR2(width / 2, height - 100);
 	Data.player.LaunchVec = VECTOR2 (0, -1);
 	Data.player.Hp = 100;
-	Data.player.HalfSizeW = 75/2.0f;
-	Data.player.HalfSizeH = 75/2.0f;
+	Data.player.HalfSizeW = 96/2.0f;
+	Data.player.HalfSizeH = 96/2.0f;
 	Data.player.Speed = 300;
-	Data.player.LaunchCoolTime = 0.1f;
+	Data.player.LaunchCoolTime = 0.3f;
 	Data.player.CurLaunchCoolTime = 0;
 
 	Data.playerBullet.TotalNum = 50;
@@ -67,18 +67,52 @@ void Container::Set_data()
 	Data.playerBullet.LaunchDistance = 35;
 
 	//enemy
-	Data.enemy.Pos = VECTOR2(width / 2, 100);
-	Data.enemy.Vec = VECTOR2(0, 0);
-	Data.enemy.LaunchVec = VECTOR2(0,1);
-	Data.enemy.Hp = 100;
-	Data.enemy.HalfSizeW = 50 / 2.0f;
-	Data.enemy.HalfSizeH = 50 / 2.0f;
-	Data.enemy.Speed = 100;
-	Data.enemy.MovingTime = 0;
-	Data.enemy.MovingCoolTime = 0;
-	Data.enemy.CurMovingCoolTime = 0;
-	Data.enemy.LaunchCoolTime = 0.3f;
-	Data.enemy.CurLaunchCoolTime = 0;
+	Data.enemy[0].Pos = VECTOR2(width / 2, 100);
+	Data.enemy[0].Vec = VECTOR2(0, 0);
+	Data.enemy[0].LaunchVec = VECTOR2(0, 1);
+	Data.enemy[0].Hp = 100;
+	Data.enemy[0].HalfSizeW = 50 / 2.0f;
+	Data.enemy[0].HalfSizeH = 50 / 2.0f;
+	Data.enemy[0].Speed = 10;
+	Data.enemy[0].MovingTime = 0;
+	Data.enemy[0].MovingCoolTime = 0;
+	Data.enemy[0].CurMovingCoolTime = 0;
+	Data.enemy[0].LaunchCoolTime = 0.3f;
+	Data.enemy[0].CurLaunchCoolTime = 0;
+
+	Data.enemy[1].Pos = VECTOR2(width / 2+100, 100);
+	Data.enemy[1].Vec = VECTOR2(0, 0);
+	Data.enemy[1].LaunchVec = VECTOR2(0, 1);
+	Data.enemy[1].Hp = 100;
+	Data.enemy[1].HalfSizeW = 50 / 2.0f;
+	Data.enemy[1].HalfSizeH = 50 / 2.0f;
+	Data.enemy[1].Speed = 50;
+	Data.enemy[1].MovingTime = 0;
+	Data.enemy[1].MovingCoolTime = 0;
+	Data.enemy[1].CurMovingCoolTime = 0;
+	Data.enemy[1].LaunchCoolTime = 0.3f;
+	Data.enemy[1].CurLaunchCoolTime = 0;
+
+	Data.enemy[2].Pos = VECTOR2(width / 2+200, 100);
+	Data.enemy[2].Vec = VECTOR2(0, 0);
+	Data.enemy[2].LaunchVec = VECTOR2(0, 1);
+	Data.enemy[2].Hp = 100;
+	Data.enemy[2].HalfSizeW = 50 / 2.0f;
+	Data.enemy[2].HalfSizeH = 50 / 2.0f;
+	Data.enemy[2].Speed = 100;
+	Data.enemy[2].MovingTime = 0;
+	Data.enemy[2].MovingCoolTime = 0;
+	Data.enemy[2].CurMovingCoolTime = 0;
+	Data.enemy[2].LaunchCoolTime = 0.3f;
+	Data.enemy[2].CurLaunchCoolTime = 0;
+
+
+	Data.enemyBullet.TotalNum = 1000;
+	Data.enemyBullet.CurNum = 0;
+	Data.enemyBullet.AdvSpeed = 300;
+	Data.enemyBullet.AngSpeed = 0;
+	Data.enemyBullet.BcRadius = 3.0f;
+	Data.enemyBullet.LaunchDistance = 35;
 }
 void Container::Load_graphic()
 {

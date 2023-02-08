@@ -13,8 +13,12 @@ void Pause_game::Create()
 void Pause_game::Draw()
 {
 	clear();
+	
 	GetGame()->GetMap()->Draw();
 	GetGame()->GetPlayer()->Draw();
+	rectMode(CORNER);
+	fill(0, 0, 0, 170);
+	rect(0, 0, width, height);
 }
 
 void Pause_game::NextScene()

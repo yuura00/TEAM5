@@ -1,5 +1,4 @@
 #include "Player.h"
-
 #include"Game.h"
 #include"Container.h"
 #include"graphic.h"
@@ -83,7 +82,8 @@ void Player::Draw()
 	fill(255);
 	
 	image(DPlayer.img,DPlayer.Pos.x, DPlayer.Pos.y);
-
+	fill(125, 125, 125, 100);
+	rect(DPlayer.Pos.x, DPlayer.Pos.y, 90,60);
 }
 
 void Player::SaveData()

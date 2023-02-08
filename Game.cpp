@@ -12,6 +12,7 @@
 #include"Player.h"
 #include"Map.h"
 #include"Player_bullets.h"
+#include"Enemy_bullets.h"
 bool Game::Initialize()
 {
 	window(1920, 1080,full);
@@ -49,7 +50,13 @@ void Game::Shutdown()
 	}
 	SAFE_DELETE(PContainer);
 	SAFE_DELETE(PPlayer);
-
+	for (int i = 0; i < Enemy_num; i++) {
+		SAFE_DELETE(PEnemy[i]);
+	}
+	SAFE_DELETE(PMap);
+	SAFE_DELETE(PBullets);
+	SAFE_DELETE(PPBullets);
+	SAFE_DELETE(PEBullets);
 	closeWindow();
 
 }
@@ -66,8 +73,13 @@ void Game::UpdateGame()
 		CreateScene(NextScene);
 		if ((NextScene!=EPauseGame&&NextScene!=EPlaying)&&(CurState==EPlaying||CurState==EPauseGame)) {
 			SAFE_DELETE(PPlayer);
+			for (int i = 0; i < Enemy_num; i++) {
+				SAFE_DELETE(PEnemy[i]);
+			}
 			SAFE_DELETE(PMap);
 			SAFE_DELETE(PBullets);
+			SAFE_DELETE(PPBullets);
+			SAFE_DELETE(PEBullets);
 		}
 		CurState = NextScene;
 		
@@ -114,10 +126,14 @@ void Game::CreateScene(State i)
 			if (PauseSw != true) {
 				Scene[EPlaying] = new Playing_game(this);
 				PPlayer = new Player(this);
-				PEnemy = new Enemy(this);
+				for (int i = 0; i < Enemy_num; i++) {
+					PEnemy[i] = new Enemy(this);
+				}
+				
 				PMap = new Map(this);
 				PBullets = new Bullets(this);
 				PPBullets = new Player_bullets(this);
+				PEBullets = new Enemy_bullets(this);
 			}
 		case EPauseGame:
 			
@@ -126,6 +142,23 @@ void Game::CreateScene(State i)
 	}
 		
 
+}
+
+Enemy* Game::GetEnemy(int i)
+{
+	if (i == 0) {
+		return PEnemy[EnemyNo1];
+	}
+	else if (i == 1) {
+		return PEnemy[EnemyNo2];
+	}
+	else if (i == 2) {
+		return PEnemy[EnemyNo3];
+	}
+	else{
+		print("Error");
+		return 0;
+	}
 }
 
 

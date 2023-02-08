@@ -5,6 +5,7 @@ class Playing_game :
     public Scene
 {
 public:
+    
     struct Data {
 
     };
@@ -14,6 +15,7 @@ public:
     void Update();
     
     void Draw();
+
 private:
     Data DPlayingGame;
     
