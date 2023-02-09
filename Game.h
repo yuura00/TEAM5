@@ -7,6 +7,14 @@ private:
 public:
 	class Container* GetContainer() { return PContainer; }
 public:
+	
+	enum Type_enemy {
+		EnemyNo1,
+		EnemyNo2,
+		EnemyNo3,
+		EnemyNo4,
+		Enemy_num,
+	};
 	enum State {
 		ETitle,
 		ESStage,ESChara,
@@ -15,25 +23,41 @@ public:
 		//EGameClear,
 		//EGameOver,
 		State_num
+
 	};
 	
-
+	bool PauseSw;
+	State NextScene=ETitle;
+	State CurState=ETitle;
+	
+	int TypeNum;
+	
 private:
-	class Scene* Scenes[State_num];
-	State CurState;
+	class Scene* Scene[State_num];
+	
 	
 	class Player* PPlayer;
+	class Enemy* PEnemy[Enemy_num];
 	class Map* PMap;
+	class Bullets* PBullets;
+	class Player_bullets* PPBullets;
+	class Enemy_bullets* PEBullets;
 public:
 	bool Initialize();
 	void RunLoop();
 	void Shutdown();
 	void ChangeScene(State scene);
-	void ChangeState(State state);
+	void ChangePause(State state);
+	void CreateScene(State i);
 	
-	State GetCurState() { return CurState; }
+	int GetCurState() { return CurState; }
 	class Player* GetPlayer() { return PPlayer; }
+	class Enemy* GetEnemy(int i);
 	class Map* GetMap() { return PMap; }
+	class Bullets* GetBullets() { return PBullets; }
+	class Player_bullets* GetPBullets() { return PPBullets; }
+	class Enemy_bullets* GetEBullets() { return PEBullets; }
+	
 private:
 	void ProcessInput();
 	void UpdateGame();

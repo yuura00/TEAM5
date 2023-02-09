@@ -17,6 +17,9 @@
     <Filter Include="Actor">
       <UniqueIdentifier>{d2d33000-f820-49b9-9c80-cf0672084f53}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Actor\Bullet">
+      <UniqueIdentifier>{ae3505a3-fb93-49c2-b130-bbe68f68dddd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -54,6 +57,18 @@
     </ClCompile>
     <ClCompile Include="Map.cpp">
       <Filter>Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="Bullets.cpp">
+      <Filter>Actor\Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="Player_bullets.cpp">
+      <Filter>Actor\Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy.cpp">
+      <Filter>Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy_bullets.cpp">
+      <Filter>Actor\Bullet</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -94,6 +109,18 @@
     </ClInclude>
     <ClInclude Include="Map.h">
       <Filter>Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullets.h">
+      <Filter>Actor\Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="Player_bullets.h">
+      <Filter>Actor\Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy.h">
+      <Filter>Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy_bullets.h">
+      <Filter>Actor\Bullet</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -134,13 +134,17 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Bullets.cpp" />
     <ClCompile Include="Container.cpp" />
+    <ClCompile Include="Enemy.cpp" />
+    <ClCompile Include="Enemy_bullets.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Game_object.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="Pause_game.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="Player_bullets.cpp" />
     <ClCompile Include="Playing_game.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="Select_character.cpp" />
@@ -156,12 +160,16 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Bullets.h" />
     <ClInclude Include="Container.h" />
+    <ClInclude Include="Enemy.h" />
+    <ClInclude Include="Enemy_bullets.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="Game_object.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="Pause_game.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="Player_bullets.h" />
     <ClInclude Include="Playing_game.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="Select_character.h" />

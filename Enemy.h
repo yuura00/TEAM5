@@ -1,7 +1,7 @@
 #pragma once
 #include"Game_object.h"
 #include"graphic.h"
-class Player :
+class Enemy :
     public Game_object
 {
 public:
@@ -13,41 +13,45 @@ public:
         COLOR Color;
         COLOR NormalColor;
         COLOR DamageColor;
-
         VECTOR2 Pos;
+        VECTOR2 Vec;
         VECTOR2 LaunchVec;
-        float CollisionOffSetY;
         float Speed;
         float HalfSizeW;
         float HalfSizeH;
-        float BcRadius;
         int Hp;
+        float BcRadius;
+        float CollisionOffSetY;
         float LaunchCoolTime;
         float CurLaunchCoolTime;
-        float InvincibleRestTime;
-        float InvincibleTime;
-        
+        float MovingCoolTime;
+        float CurMovingCoolTime;
+        float MovingTime;
+        int RandomIndex;
     };
 
 private:
-    Data DPlayer;
-    Data DPauseGame;
+    Data DEnemy[3];
+    Data DPauseGame[3];
 
 public:
-    Player(class Game* game);
-    ~Player();
+    Enemy(class Game* game);
+    ~Enemy();
     void Create();
     void Init();
     void Update();
     void Move();
+    void RandomMove();
     void Launch();
     void Collision();
     void Draw();
     void SaveData();
     void SetData();
-    
-    VECTOR2 GetPos() { return DPlayer.Pos; }
-    int GetHp() { return DPlayer.Hp; }
-    
+    void Kill();
+
+
+    VECTOR2 GetPos(int enemyNo) { return DEnemy[enemyNo].Pos; }
+    int GetHp(int enemyNo) { return DEnemy[enemyNo].Hp; }
+
 };
 

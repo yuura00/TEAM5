@@ -15,7 +15,7 @@ public:
         VECTOR2 BackGroundPos[3];
         int BackGroundImgNum;
         float ScrollSpeed;
-
+        float StageX;
     };
     Map(class Game* game):Game_object(game){}
     void Create();
@@ -24,6 +24,7 @@ public:
     void Draw();
     void SetData();
     void SaveData();
+    float GetStageX() { return DMap.StageX; }
 private:
     Data DMap;
     Data DPauseGame;

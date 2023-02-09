@@ -5,6 +5,9 @@
 #include"Player.h"
 #include"Playing_game.h"
 #include"Map.h"
+#include"Bullets.h"
+#include"Enemy.h"
+#include"Game.h"
 class Container 
 {
 private:
@@ -14,6 +17,10 @@ private:
         Playing_game::Data playingGame;
 
         Player::Data player;
+        Enemy::Data enemy[3];
+        Bullets::Data playerBullet;
+        Bullets::Data enemyBullet;
+        
         Map::Data map;
     };
     ALL_DATA Data;
