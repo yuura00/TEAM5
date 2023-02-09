@@ -7,12 +7,14 @@ class Bullets :
 public:
     struct Data {
         int Img = 0;
+        float ImgSize = 0;
         int TotalNum;
         int CurNum = 0;
         float AdvSpeed = 0;
         float AngSpeed = 0;
         float LaunchDistance = 0;
         float BcRadius = 0;
+        int Damage = 0;
     };
 private:
     Data PBullet;
@@ -37,5 +39,6 @@ public:
     VECTOR2 GetPos(int i) { return PBullets[i].Pos; }
     int GetCurNum() { return PBullet.CurNum; }
     float GetBcRadius() { return PBullet.BcRadius; }
+    int GetDamage() { return PBullet.Damage; }
 };
 

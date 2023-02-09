@@ -8,6 +8,7 @@
 #include<stdlib.h>
 #include<time.h>
 #include"Enemy_bullets.h"
+#include"Player_bullets.h"
 Enemy::Enemy(Game* game)
 	:Game_object(game)
 {
@@ -50,11 +51,11 @@ void Enemy::Move()
 	for (int i = 0; i < Game::Enemy_num; i++) {
 		RandomMove();
 
-		if (DEnemy[i].Pos.x - DEnemy[i].HalfSizeW <= 600) {
+		if (DEnemy[i].Pos.x - DEnemy[i].HalfSizeW <= GetGame()->GetMap()->GetStageX()) {
 			DEnemy[i].Pos.x = 600 + DEnemy[i].HalfSizeW;
 			DEnemy[i].Vec.x = 1;
 		}
-		if (DEnemy[i].Pos.x + DEnemy[i].HalfSizeW >= 1320) {
+		if (DEnemy[i].Pos.x + DEnemy[i].HalfSizeW >= (width- GetGame()->GetMap()->GetStageX())) {
 			DEnemy[i].Pos.x = 1320 - DEnemy[i].HalfSizeW;
 			DEnemy[i].Vec.x = 0;
 		}
@@ -80,15 +81,15 @@ void Enemy::RandomMove()
 		DEnemy[i].Speed =50+rand() % 100;
 
 		//x moving
-		if (DEnemy[i].Vec.x == 1 && DEnemy[i].Pos.x + DEnemy[i].HalfSizeW < width - 600) {
+		if (DEnemy[i].Vec.x == 1 && DEnemy[i].Pos.x + DEnemy[i].HalfSizeW < (width - GetGame()->GetMap()->GetStageX())) {
 			DEnemy[i].Pos.x += DEnemy[i].Speed * delta;
 		}
-		else if (DEnemy[i].Vec.x == 0 && DEnemy[i].Pos.x - DEnemy[i].HalfSizeW > 600) {
+		else if (DEnemy[i].Vec.x == 0 && DEnemy[i].Pos.x - DEnemy[i].HalfSizeW > GetGame()->GetMap()->GetStageX()) {
 			DEnemy[i].Pos.x -= DEnemy[i].Speed * delta;
 		}
 
 		//y moving
-		if (DEnemy[i].Vec.y == 1 && DEnemy[i].Pos.y + DEnemy[i].HalfSizeH < height / 2) {
+		if (DEnemy[i].Vec.y == 1 && DEnemy[i].Pos.y + DEnemy[i].HalfSizeH < (height / 2)) {
 			DEnemy[i].Pos.y += DEnemy[i].Speed * delta;
 		}
 		else if (DEnemy[i].Vec.y == 0 && DEnemy[i].Pos.y - DEnemy[i].HalfSizeH > 0) {
@@ -123,14 +124,40 @@ void Enemy::Launch()
 
 void Enemy::Collision()
 {
+	
+	for (int i = 0; i < Game::Enemy_num; i++) {
+		//collision distance
+		Bullets* bullets = GetGame()->GetPBullets();
+		float distance = DEnemy[i].BcRadius + bullets->GetBcRadius();
+		float sqDistance = distance * distance;
+		//enemy collision
+		int curNum = bullets->GetCurNum();
+		DEnemy[i].Color = DEnemy[i].NormalColor;
+		for (int j = curNum - 1; j >= 0; j--) {
+			VECTOR2 enemyPos = DEnemy[i].Pos;
+			enemyPos.y -= DEnemy[i].CollisionOffSetY;
+			VECTOR2 vec = enemyPos - bullets->GetPos(j);
+			if (vec.sqMag() < sqDistance) {
+				DEnemy[i].Hp -= bullets->GetDamage();
+				DEnemy[i].Color = DEnemy[i].DamageColor;
+
+				bullets->Kill(j);
+				j = 0;
+			}
+		}
+	}
+	
+	
+
 }
 
 void Enemy::Draw()
 {
 	for (int i = 0; i < Game::Enemy_num; i++) {
 		rectMode(CENTER);
-		fill(255, 0, 0);
-		rect(DEnemy[i].Pos.x, DEnemy[i].Pos.y, DEnemy[i].HalfSizeW, DEnemy[i].HalfSizeH);
+		fill(DEnemy[i].Color);
+		circle(DEnemy[i].Pos.x, DEnemy[i].Pos.y, DEnemy[i].BcRadius*2);
+		print(DEnemy[i].Hp);
 		//image(DEnemy[i].img, DEnemy[i].Pos.x, DEnemy[i].Pos.y);
 	}
 }

@@ -10,6 +10,9 @@ public:
         int img = 0;
         float angle = 0;
 
+        COLOR Color;
+        COLOR NormalColor;
+        COLOR DamageColor;
         VECTOR2 Pos;
         VECTOR2 Vec;
         VECTOR2 LaunchVec;
@@ -17,6 +20,8 @@ public:
         float HalfSizeW;
         float HalfSizeH;
         int Hp;
+        float BcRadius;
+        float CollisionOffSetY;
         float LaunchCoolTime;
         float CurLaunchCoolTime;
         float MovingCoolTime;
@@ -27,7 +32,7 @@ public:
 
 private:
     Data DEnemy[3];
-    Data DPauseGame[];
+    Data DPauseGame[3];
 
 public:
     Enemy(class Game* game);

@@ -34,6 +34,7 @@ void Map::Update()
 void Map::Draw()
 {
 	rectMode(CORNER);
+	
 	for (int i = 0; i < DMap.BackGroundImgNum; i++) {
 		image(DMap.BackGroundStageNo1, DMap.BackGroundPos[i].x, DMap.BackGroundPos[i].y);
 	}

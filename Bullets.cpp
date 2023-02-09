@@ -59,7 +59,7 @@ void Bullets::Draw()
 	rectMode(CENTER);
 	fill(255);
 	for (int i = 0; i < PBullet.CurNum; i++) {
-		circle(PBullets[i].Pos.x, PBullets[i].Pos.y, PBullet.BcRadius*2);
+		image(PBullet.Img,PBullets[i].Pos.x,PBullets[i].Pos.y,0,PBullet.ImgSize);
  	}
 	print( PBullet.CurNum);
 }

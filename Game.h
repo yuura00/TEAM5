@@ -12,6 +12,7 @@ public:
 		EnemyNo1,
 		EnemyNo2,
 		EnemyNo3,
+		EnemyNo4,
 		Enemy_num,
 	};
 	enum State {

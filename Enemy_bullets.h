@@ -6,4 +6,5 @@ class Enemy_bullets :
 public:
     Enemy_bullets(class Game* game);
     void Create();
+    
 };

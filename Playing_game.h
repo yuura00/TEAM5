@@ -7,7 +7,7 @@ class Playing_game :
 public:
     
     struct Data {
-
+        float stageW;
     };
     Playing_game(class Game* game):Scene(game){}
     void Create();
@@ -15,7 +15,7 @@ public:
     void Update();
     
     void Draw();
-
+    
 private:
     Data DPlayingGame;
     

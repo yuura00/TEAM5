@@ -10,14 +10,22 @@ public:
         int img = 0;
         float angle = 0;
 
+        COLOR Color;
+        COLOR NormalColor;
+        COLOR DamageColor;
+
         VECTOR2 Pos;
         VECTOR2 LaunchVec;
+        float CollisionOffSetY;
         float Speed;
         float HalfSizeW;
         float HalfSizeH;
+        float BcRadius;
         int Hp;
         float LaunchCoolTime;
         float CurLaunchCoolTime;
+        float InvincibleRestTime;
+        float InvincibleTime;
         
     };
 
