@@ -1,5 +1,6 @@
 #include "Container.h"
 #include"graphic.h"
+#include"sound.h"
 Container::Container()
 {
 }
@@ -8,6 +9,7 @@ void Container::Load()
 {
 	Set_data();
 	Load_graphic();
+	LoadSound();
 }
 
 void Container::Set_data()
@@ -68,15 +70,26 @@ void Container::Set_data()
 	Data.player.InvincibleRestTime = Data.player.InvincibleTime;
 
 	Data.playerBullet.ImgSize = 0.25f;
-	Data.playerBullet.TotalNum = 50;
+	Data.playerBullet.TotalNum = 1000;
 	Data.playerBullet.CurNum = 0;
-	Data.playerBullet.Damage = 10;
+	Data.playerBullet.Damage = 100;
 	Data.playerBullet.AdvSpeed = 300;
 	Data.playerBullet.AngSpeed = 0;
 	Data.playerBullet.BcRadius = 3.0f;
 	Data.playerBullet.LaunchDistance = 35;
 
 	//enemy
+	Data.enemyType[0].Hp = 100;
+	Data.enemyType[0].BcRadius = 25;
+	Data.enemyType[0].Speed = 10;
+	Data.enemyType[0].LaunchCoolTime = 0.3f;
+	
+	Data.enemyType[1].Hp = 300;
+	Data.enemyType[1].BcRadius = 25;
+	Data.enemyType[1].Speed = 10;
+	Data.enemyType[1].LaunchCoolTime = 0.3f;
+
+	Data.enemy[0].EnemyType = 0;
 	Data.enemy[0].Color = COLOR(255, 255, 255);
 	Data.enemy[0].NormalColor = COLOR(255, 255, 255);
 	Data.enemy[0].DamageColor = COLOR(200, 100, 100);
@@ -95,6 +108,7 @@ void Container::Set_data()
 	Data.enemy[0].LaunchCoolTime = 0.3f;
 	Data.enemy[0].CurLaunchCoolTime = 0;
 
+	Data.enemy[1].EnemyType = 0;
 	Data.enemy[1].Color = COLOR(255, 255, 255);
 	Data.enemy[1].NormalColor = COLOR(255, 255, 255);
 	Data.enemy[1].DamageColor = COLOR(200, 100, 100);
@@ -113,6 +127,7 @@ void Container::Set_data()
 	Data.enemy[1].LaunchCoolTime = 0.3f;
 	Data.enemy[1].CurLaunchCoolTime = 0;
 
+	Data.enemy[2].EnemyType = 1;
 	Data.enemy[2].Color = COLOR(255, 255, 255);
 	Data.enemy[2].NormalColor = COLOR(255, 255, 255);
 	Data.enemy[2].DamageColor = COLOR(200, 100, 100);
@@ -139,6 +154,7 @@ void Container::Set_data()
 	Data.enemyBullet.AngSpeed = 0;
 	Data.enemyBullet.BcRadius = 3.0f;
 	Data.enemyBullet.LaunchDistance = 35;
+
 }
 void Container::Load_graphic()
 {
@@ -146,8 +162,17 @@ void Container::Load_graphic()
 	Data.sStage.BackImg = loadImage("assets\\stageSelect_v3_a.png");
 	Data.sStage.SelectIconImg = loadImage("assets\\Select_Icon_v2_a.png");
 	Data.map.BackGroundStageNo1 = loadImage("assets\\loop_material.png");
-	Data.player.img = loadImage("assets\\Player3.png");
+	Data.player.Img = loadImage("assets\\Player3.png");
 	
 	Data.playerBullet.Img = loadImage("assets\\bullet_a_blue.png");
 	Data.enemyBullet.Img = loadImage("assets\\bullet_a_red.png");
+	Data.enemyType[0].img = loadImage("assets\\Enemy1.png");
+	Data.enemyType[1].img = loadImage("assets\\Enemy2.png");
+}
+
+void Container::LoadSound()
+{
+	Data.player.ShootSound = loadSound("sounds\\PlayerShoot.wav");
+	Data.title.DecisionSound = loadSound("sounds\\Decision.wav");
+	Data.title.CursorMoveSound = loadSound("sounds\\CursorMove.wav");
 }

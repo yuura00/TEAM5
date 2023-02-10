@@ -6,6 +6,7 @@
 #include"window.h"
 #include"Player_bullets.h"
 #include"Enemy_bullets.h"
+#include"sound.h"
 Player::Player(Game* game)
 	:Game_object(game)
 {
@@ -66,6 +67,7 @@ void Player::Launch()
 		if (DPlayer.CurLaunchCoolTime > DPlayer.LaunchCoolTime) {
 			GetGame()->GetPBullets()->Launch(DPlayer.Pos, DPlayer.LaunchVec);
 			DPlayer.CurLaunchCoolTime = 0;
+			playSound(DPlayer.ShootSound);
 		}
 	}
 	else {
@@ -106,7 +108,7 @@ void Player::Draw()
 	rectMode(CENTER);
 	
 	imageColor(DPlayer.Color);
-	image(DPlayer.img,DPlayer.Pos.x, DPlayer.Pos.y);
+	image(DPlayer.Img,DPlayer.Pos.x, DPlayer.Pos.y);
 	fill(125, 125, 125, 100);
 	circle(DPlayer.Pos.x, DPlayer.Pos.y+DPlayer.CollisionOffSetY, DPlayer.BcRadius*2);
 	fill(255);

@@ -9,10 +9,11 @@
 #include<time.h>
 #include"Enemy_bullets.h"
 #include"Player_bullets.h"
+
 Enemy::Enemy(Game* game)
 	:Game_object(game)
 {
-
+	
 }
 
 Enemy::~Enemy()
@@ -20,8 +21,16 @@ Enemy::~Enemy()
 }
 void Enemy::Create()
 {
+	for (int i = 0; i < Game::Etype_num; i++) {
+		TData[i] = GetGame()->GetContainer()->GetData().enemyType[i];
+	}
 	for (int i = 0; i < Game::Enemy_num; i++) {
 		DEnemy[i] = GetGame()->GetContainer()->GetData().enemy[i];
+		DEnemy[i].img = TData[DEnemy[i].EnemyType].img;
+		DEnemy[i].Hp = TData[DEnemy[i].EnemyType].Hp;
+		DEnemy[i].Speed = TData[DEnemy[i].EnemyType].Speed;
+		DEnemy[i].LaunchCoolTime = TData[DEnemy[i].EnemyType].LaunchCoolTime;
+		DEnemy[i].BcRadius = TData[DEnemy[i].EnemyType].BcRadius;
 	}
 	
 	GetGame()->GetEBullets()->Create();
@@ -34,13 +43,17 @@ void Enemy::Init()
 		DEnemy[i].Pos = dEnemy.Pos;
 		DEnemy[i].Hp = dEnemy.Hp;
 	}
-	
+	KillCnt = 0;
 
 }
 
 void Enemy::Update()
 {
-
+	for (int i = 0; i < Game::Enemy_num-KillCnt; i++) {
+		if (DEnemy[i].Hp <= 0) {
+			Kill(i);
+		}
+	}
 	Move();
 	Launch();
 	Collision();
@@ -48,7 +61,7 @@ void Enemy::Update()
 
 void Enemy::Move()
 {
-	for (int i = 0; i < Game::Enemy_num; i++) {
+	for (int i = 0; i < Game::Enemy_num-KillCnt; i++) {
 		RandomMove();
 
 		if (DEnemy[i].Pos.x - DEnemy[i].HalfSizeW <= GetGame()->GetMap()->GetStageX()) {
@@ -73,7 +86,7 @@ void Enemy::Move()
 
 void Enemy::RandomMove()
 {
-	for (int i = 0; i < Game::Enemy_num; i++) {
+	for (int i = 0; i < Game::Enemy_num-KillCnt; i++) {
 		srand((unsigned int)time(NULL)+1000*i);
 		DEnemy[i].Vec.x = rand() % 2;// 1:right 0:left
 		DEnemy[i].Vec.y = rand() % 2;// 1::down 0:up
@@ -108,7 +121,7 @@ void Enemy::RandomMove()
 void Enemy::Launch()
 {
 	
-	for (int i = 0; i < Game::Enemy_num; i++) {
+	for (int i = 0; i < Game::Enemy_num-KillCnt; i++) {
 
 		DEnemy[i].CurLaunchCoolTime += delta;
 		if (DEnemy[i].CurLaunchCoolTime >= DEnemy[i].LaunchCoolTime) {
@@ -125,7 +138,7 @@ void Enemy::Launch()
 void Enemy::Collision()
 {
 	
-	for (int i = 0; i < Game::Enemy_num; i++) {
+	for (int i = 0; i < Game::Enemy_num-KillCnt; i++) {
 		//collision distance
 		Bullets* bullets = GetGame()->GetPBullets();
 		float distance = DEnemy[i].BcRadius + bullets->GetBcRadius();
@@ -153,18 +166,22 @@ void Enemy::Collision()
 
 void Enemy::Draw()
 {
-	for (int i = 0; i < Game::Enemy_num; i++) {
+	
+	for (int i = 0; i < Game::Enemy_num-KillCnt; i++) {
 		rectMode(CENTER);
-		fill(DEnemy[i].Color);
+		angleMode(DEGREES);
+		image(DEnemy[i].img, DEnemy[i].Pos.x, DEnemy[i].Pos.y,DEnemy[i].angle);
+		fill(DEnemy[i].Color.r, DEnemy[i].Color.g, DEnemy[i].Color.b,125);
 		circle(DEnemy[i].Pos.x, DEnemy[i].Pos.y, DEnemy[i].BcRadius*2);
 		print(DEnemy[i].Hp);
-		//image(DEnemy[i].img, DEnemy[i].Pos.x, DEnemy[i].Pos.y);
+		print(KillCnt);
 	}
+	
 }
 
 void Enemy::SaveData()
 {
-	for (int i = 0; i < Game::Enemy_num; i++) {
+	for (int i = 0; i < Game::Enemy_num-KillCnt; i++) {
 		CheckError = true;
 		DPauseGame[i] = DEnemy[i];
 	}
@@ -172,7 +189,7 @@ void Enemy::SaveData()
 
 void Enemy::SetData()
 {
-	for (int i = 0; i < Game::Enemy_num; i++) {
+	for (int i = 0; i < Game::Enemy_num-KillCnt; i++) {
 		if (CheckError == true) {
 			DEnemy[i] = DPauseGame[i];
 			CheckError = false;
@@ -181,5 +198,22 @@ void Enemy::SetData()
 			print("ERROR");
 		}
 	}
+}
+
+void Enemy::Kill(int no)
+{
+	if (no == Game::Enemy_num-1) {
+		KillCnt++;
+	}
+	
+	else {
+		for (int i = no; i < Game::Enemy_num - (1+KillCnt); i++) {
+			DEnemy[i] = DEnemy[i + 1];
+			
+		}
+		KillCnt++;
+	}
+	
+	
 }
 

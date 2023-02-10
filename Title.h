@@ -9,6 +9,8 @@ public:
         VECTOR2 ImgPos;
         float ImgSize;
         int TitleImg;
+        int DecisionSound;
+        int CursorMoveSound;
 
         //select signal
         int sw[2][3];

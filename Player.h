@@ -7,8 +7,9 @@ class Player :
 public:
     bool CheckError = false;
     struct Data {
-        int img = 0;
-        float angle = 0;
+        int Img = 0;
+        float Angle = 0;
+        int ShootSound = 0;
 
         COLOR Color;
         COLOR NormalColor;
