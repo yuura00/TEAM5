@@ -8,6 +8,7 @@
 #include"Bullets.h"
 #include"Enemy.h"
 #include"Game.h"
+
 class Container 
 {
 private:
@@ -17,7 +18,8 @@ private:
         Playing_game::Data playingGame;
 
         Player::Data player;
-        Enemy::Data enemy[3];
+        Enemy::Data enemy[Game::Enemy_num];
+        Enemy::TypeData enemyType[Game::Etype_num];
         Bullets::Data playerBullet;
         Bullets::Data enemyBullet;
         
@@ -28,6 +30,7 @@ private:
     
     void Set_data();
     void Load_graphic();
+    void LoadSound();
 public:
     Container();
     void Load();

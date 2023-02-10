@@ -1,15 +1,26 @@
 #pragma once
 #include"Game_object.h"
 #include"graphic.h"
+#include"Game.h"
 class Enemy :
     public Game_object
 {
 public:
     bool CheckError = false;
-    struct Data {
+    int KillCnt = 0;
+    struct TypeData {
+        int Hp;
+        float BcRadius;
+        float Speed;
         int img = 0;
-        float angle = 0;
-
+        float LaunchCoolTime;
+    };
+    struct Data {
+        int EnemyType;
+        
+        int img = 0;
+        float angle = 180;
+        
         COLOR Color;
         COLOR NormalColor;
         COLOR DamageColor;
@@ -29,11 +40,11 @@ public:
         float MovingTime;
         int RandomIndex;
     };
-
+   
 private:
-    Data DEnemy[3];
-    Data DPauseGame[3];
-
+    Data DEnemy[Game::Enemy_num];
+    Data DPauseGame[Game::Enemy_num];
+    TypeData TData[Game::Etype_num];
 public:
     Enemy(class Game* game);
     ~Enemy();
@@ -47,7 +58,7 @@ public:
     void Draw();
     void SaveData();
     void SetData();
-    void Kill();
+    void Kill(int no);
 
 
     VECTOR2 GetPos(int enemyNo) { return DEnemy[enemyNo].Pos; }

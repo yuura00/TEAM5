@@ -13,9 +13,9 @@ void Playing_game::Create()
 	DPlayingGame = GetGame()->GetContainer()->GetData().playingGame;
 	
 	GetGame()->GetPlayer()->Create();
-	for (int i = 0;i < GetGame()->Enemy_num; i++) {
-		GetGame()->GetEnemy(i)->Create();
-	}
+	
+	GetGame()->GetEnemy()->Create();
+	
 	GetGame()->GetMap()->Create();
 
 }
@@ -27,9 +27,9 @@ void Playing_game::Init()
 
 	GetGame()->GetMap()->Init();
 	GetGame()->GetPlayer()->Init();
-	for (int i = 0; i < GetGame()->Enemy_num; i++) {
-		GetGame()->GetEnemy(i)->Init();
-	}
+	
+	GetGame()->GetEnemy()->Init();
+	
 	GetGame()->GetPBullets()->Init();
 	GetGame()->GetEBullets()->Init();
 }
@@ -40,9 +40,9 @@ void Playing_game::Update()
 
 	GetGame()->GetMap()->Update();
 	GetGame()->GetPlayer()->Update();
-	for (int i = 0; i < GetGame()->Enemy_num; i++) {
-		GetGame()->GetEnemy(i)->Update();
-	}
+	
+	GetGame()->GetEnemy()->Update();
+	
 	GetGame()->GetPBullets()->Update();
 	GetGame()->GetEBullets()->Update();
 }
@@ -53,9 +53,9 @@ void Playing_game::Draw()
 	print(delta);
 	GetGame()->GetMap()->Draw();
 	GetGame()->GetPlayer()->Draw();
-	for (int i = 0; i < GetGame()->Enemy_num; i++) {
-		GetGame()->GetEnemy(i)->Draw();
-	}
+	
+	GetGame()->GetEnemy()->Draw();
+	
 	
 	GetGame()->GetPBullets()->Draw();
 	GetGame()->GetEBullets()->Draw();

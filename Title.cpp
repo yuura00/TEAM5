@@ -3,6 +3,7 @@
 #include "Title.h"
 #include"graphic.h"
 #include"input.h"
+#include"sound.h"
 Title::Title(Game* game)
 	:Scene(game)
 {
@@ -32,12 +33,16 @@ void Title::NextScene()
 {
 	//start
 	if (isTrigger(KEY_SPACE)&&DTitle.sw[DTitle.cl][DTitle.rw]==0) {
+		playSound(DTitle.DecisionSound);
 		GetGame()->ChangeScene(GetGame()->ESStage);
+		
 	}
 
 	//quit
 	if (isTrigger(KEY_SPACE) && DTitle.sw[DTitle.cl][DTitle.rw] == 5) {
+		playSound(DTitle.DecisionSound);
 		GetGame()->Shutdown();
+		
 	}
 
 }
@@ -59,15 +64,19 @@ void Title::Update()
 	
 	if (isTrigger(KEY_S) && DTitle.rw < 2) {
 		DTitle.rw++;
+		playSound(DTitle.CursorMoveSound);
 	}
 	if (isTrigger(KEY_W) && DTitle.rw > 0) {
 		DTitle.rw--;
+		playSound(DTitle.CursorMoveSound);
 	}
 	if (isTrigger(KEY_D) && DTitle.cl!= 1){
 		DTitle.cl = 1;
+		playSound(DTitle.CursorMoveSound);
 	}
 	if (isTrigger(KEY_A)&&DTitle.cl!=0) {
 		DTitle.cl = 0;
+		playSound(DTitle.CursorMoveSound);
 	}
 	if (DTitle.sw[DTitle.cl][DTitle.rw] == 0) {
 		DTitle.Dx = 0;
