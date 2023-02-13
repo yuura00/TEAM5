@@ -2,8 +2,7 @@
 
 class Game
 {
-public:
-	~Game();
+
 private:
 	class Container* PContainer=0;
 public:
@@ -44,9 +43,9 @@ private:
 	class Player* PPlayer;
 	class Enemy* PEnemy;
 	class Map* PMap;
-	class Bullets* PBullets;
-	class Player_bullets* PPBullets;
-	class Enemy_bullets* PEBullets;
+	class Bullets* PBullet;
+	class Player_bullets* PPBullet;
+	class Enemy_bullets* PEBullet;
 public:
 	bool Initialize();
 	void RunLoop();
@@ -59,9 +58,9 @@ public:
 	class Player* GetPlayer() { return PPlayer; }
 	class Enemy* GetEnemy() { return PEnemy; }
 	class Map* GetMap() { return PMap; }
-	class Bullets* GetBullets() { return PBullets; }
-	class Player_bullets* GetPBullets() { return PPBullets; }
-	class Enemy_bullets* GetEBullets() { return PEBullets; }
+	class Bullets* GetBullets() { return PBullet; }
+	class Player_bullets* GetPBullets() { return PPBullet; }
+	class Enemy_bullets* GetEBullets() { return PEBullet; }
 	
 private:
 	void ProcessInput();

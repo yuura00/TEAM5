@@ -64,13 +64,13 @@ void Playing_game::Draw()
 
 void Playing_game::NextScene()
 {
-	if (isTrigger(KEY_P)&&GetGame()->GetCurState()!=GetGame()->EPauseGame) {
+	if (GetGame()->GetPlayer()->GetHp()<=0 && GetGame()->GetCurState() != GetGame()->EPauseGame) {
 		GetGame()->GetPlayer()->SaveData();
 		GetGame()->GetMap()->SaveData();
 		
 		GetGame()->ChangePause(GetGame()->EPauseGame);
 	}
-	if (isTrigger(KEY_Z)) {
+	if (GetGame()->GetEnemy()->GetKill()==Game::Enemy_num) {
 		GetGame()->ChangeScene(GetGame()->EGameClear);
 	}
 }

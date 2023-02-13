@@ -63,6 +63,6 @@ public:
 
     VECTOR2 GetPos(int enemyNo) { return DEnemy[enemyNo].Pos; }
     int GetHp(int enemyNo) { return DEnemy[enemyNo].Hp; }
-
+    int GetKill() { return KillCnt; }
 };
 
