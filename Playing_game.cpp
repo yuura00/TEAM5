@@ -71,6 +71,6 @@ void Playing_game::NextScene()
 		GetGame()->ChangePause(GetGame()->EPauseGame);
 	}
 	if (isTrigger(KEY_Z)) {
-		GetGame()->ChangeScene(GetGame()->ESStage);
+		GetGame()->ChangeScene(GetGame()->EGameClear);
 	}
 }

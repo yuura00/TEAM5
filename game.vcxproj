@@ -139,7 +139,9 @@
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Enemy_bullets.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="Game_clear.cpp" />
     <ClCompile Include="Game_object.cpp" />
+    <ClCompile Include="Game_over.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="Pause_game.cpp" />
@@ -165,7 +167,9 @@
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="Enemy_bullets.h" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="Game_clear.h" />
     <ClInclude Include="Game_object.h" />
+    <ClInclude Include="Game_over.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="Pause_game.h" />
     <ClInclude Include="Player.h" />

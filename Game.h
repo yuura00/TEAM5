@@ -21,8 +21,8 @@ public:
 		ESStage,ESChara,
 		EPlaying,
 		EPauseGame,
-		//EGameClear,
-		//EGameOver,
+		EGameClear,
+		EGameOver,
 		State_num
 
 	};
@@ -31,7 +31,7 @@ public:
 		Typeno2,
 		Etype_num
 	};
-	bool PauseSw;
+	bool PauseSw=false;
 	State NextScene=ETitle;
 	State CurState=ETitle;
 	

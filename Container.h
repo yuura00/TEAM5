@@ -24,6 +24,10 @@ private:
         Bullets::Data enemyBullet;
         
         Map::Data map;
+        int CursorSound;
+        int DecisionSound;
+        int GameClearImg;
+        int GameOverImg;
     };
     ALL_DATA Data;
 

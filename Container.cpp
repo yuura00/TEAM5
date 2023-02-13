@@ -159,10 +159,12 @@ void Container::Set_data()
 void Container::Load_graphic()
 {
 	Data.title.TitleImg = loadImage("assets\\Title.png");
-	Data.sStage.BackImg = loadImage("assets\\stageSelect_v3_a.png");
+	Data.sStage.BackImg = loadImage("assets\\stageSelect_V3_b.png");
 	Data.sStage.SelectIconImg = loadImage("assets\\Select_Icon_v2_a.png");
 	Data.map.BackGroundStageNo1 = loadImage("assets\\loop_material.png");
 	Data.player.Img = loadImage("assets\\Player3.png");
+	Data.GameClearImg = loadImage("assets\\GameClear.png");
+	Data.GameOverImg = loadImage("assets\\GameOver.png");
 	
 	Data.playerBullet.Img = loadImage("assets\\bullet_a_blue.png");
 	Data.enemyBullet.Img = loadImage("assets\\bullet_a_red.png");
@@ -172,7 +174,11 @@ void Container::Load_graphic()
 
 void Container::LoadSound()
 {
+	Data.CursorSound = loadSound("sounds\\CursorMove.wav");
+	Data.DecisionSound= loadSound("sounds\\Decision.wav");
 	Data.player.ShootSound = loadSound("sounds\\PlayerShoot.wav");
-	Data.title.DecisionSound = loadSound("sounds\\Decision.wav");
-	Data.title.CursorMoveSound = loadSound("sounds\\CursorMove.wav");
+	Data.title.DecisionSound = Data.DecisionSound;
+	Data.title.CursorMoveSound = Data.CursorSound;
+	Data.sStage.CursorMoveSound = Data.CursorSound;
+	Data.sStage.Decisionsound = Data.DecisionSound;
 }

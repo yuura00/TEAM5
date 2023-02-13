@@ -13,7 +13,8 @@
 #include"Map.h"
 #include"Player_bullets.h"
 #include"Enemy_bullets.h"
-
+#include"Game_clear.h"
+#include"Game_over.h"
 Game::~Game()
 {
 	Shutdown();
@@ -144,7 +145,12 @@ void Game::CreateScene(State i)
 		case EPauseGame:
 			
 			Scene[EPauseGame] = new Pause_game(this);
-			
+		case EGameClear:
+			SAFE_DELETE(Scene[CurState]);
+			Scene[EGameClear] = new Game_clear(this);
+		case EGameOver:
+			SAFE_DELETE(Scene[CurState]);
+			Scene[EGameOver] = new Game_over(this);
 	}
 		
 

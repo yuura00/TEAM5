@@ -24,7 +24,7 @@ void Pause_game::Draw()
 void Pause_game::NextScene()
 {
 	if (isTrigger(KEY_P)) {
-		GetGame()->ChangeScene(GetGame()->ESStage);
+		GetGame()->ChangeScene(GetGame()->EGameOver);
 	}
 	if (isTrigger(KEY_Z)) {
 		GetGame()->GetPlayer()->SetData();

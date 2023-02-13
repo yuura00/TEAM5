@@ -8,7 +8,9 @@ public:
     struct Data {
         int BackImg = 0;
         int SelectIconImg = 0;
-        
+        int CursorMoveSound = 0;
+        int Decisionsound = 0;
+
         VECTOR2 SelectIconPos;
         float OffSetW;
         float OffSetX;
