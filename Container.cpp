@@ -69,7 +69,7 @@ void Container::Set_data()
 	Data.player.InvincibleTime = 0.5f;
 	Data.player.InvincibleRestTime = Data.player.InvincibleTime;
 
-	Data.playerBullet.ImgSize = 0.25f;
+	Data.playerBullet.ImgSize = 0.5f;
 	Data.playerBullet.TotalNum = 1000;
 	Data.playerBullet.CurNum = 0;
 	Data.playerBullet.Damage = 100;
@@ -146,7 +146,7 @@ void Container::Set_data()
 	Data.enemy[2].LaunchCoolTime = 0.3f;
 	Data.enemy[2].CurLaunchCoolTime = 0;
 
-	Data.enemyBullet.ImgSize = 0.25f;
+	Data.enemyBullet.ImgSize = 0.5f;
 	Data.enemyBullet.TotalNum = 50;
 	Data.enemyBullet.CurNum = 0;
 	Data.enemyBullet.Damage = 10;
@@ -161,7 +161,7 @@ void Container::Load_graphic()
 	Data.title.TitleImg = loadImage("assets\\Title.png");
 	Data.sStage.BackImg = loadImage("assets\\stageSelect_V3_b.png");
 	Data.sStage.SelectIconImg = loadImage("assets\\Select_Icon_v2_a.png");
-	Data.map.BackGroundStageNo1 = loadImage("assets\\loop_material.png");
+	Data.map.BackGroundStageNo1 = loadImage("assets\\loop_02.png");
 	Data.player.Img = loadImage("assets\\Player3.png");
 	Data.GameClearImg = loadImage("assets\\GameClear.png");
 	Data.GameOverImg = loadImage("assets\\GameOver.png");
