@@ -1,54 +1,59 @@
 #pragma once
 #include"Game_object.h"
 #include"graphic.h"
-class Player :
+#include"Game.h"
+class Boss :
     public Game_object
 {
 public:
     bool CheckError = false;
+   
     struct Data {
-        int Img = 0;
-        float Angle = 0;
-        int ShootSound = 0;
+        int BossType;
+
+        int img = 0;
+        float angle = 180;
 
         COLOR Color;
         COLOR NormalColor;
         COLOR DamageColor;
-
         VECTOR2 Pos;
+        VECTOR2 Vec;
         VECTOR2 LaunchVec;
-        float CollisionOffSetY;
         float Speed;
-        float HalfSizeW;
-        float HalfSizeH;
-        float BcRadius;
         int Hp;
+        float BcRadius;
+        float CollisionOffSetY;
         float LaunchCoolTime;
         float CurLaunchCoolTime;
-        float InvincibleRestTime;
-        float InvincibleTime;
-        float UltPoint;
+        float MovingCoolTime;
+        float CurMovingCoolTime;
+        float MovingTime;
+        int RandomIndex;
     };
 
 private:
-    Data DPlayer;
+    Data DBoss;
     Data DPauseGame;
-
+    
 public:
-    Player(class Game* game);
-    ~Player();
+    Boss(class Game* game):Game_object(game){}
+    
     void Create();
     void Init();
     void Update();
     void Move();
+    void RandomMove();
     void Launch();
     void Collision();
     void Draw();
     void SaveData();
     void SetData();
-    
-    VECTOR2 GetPos() { return DPlayer.Pos; }
-    int GetHp() { return DPlayer.Hp; }
+    void Kill(int no);
+
+
+    VECTOR2 GetPos() { return DBoss.Pos; }
+    int GetHp() { return DBoss.Hp; }
     
 };
 

@@ -19,6 +19,10 @@ Enemy::Enemy(Game* game)
 Enemy::~Enemy()
 {
 }
+void Enemy::SetEnemyData(const Data& data)
+{
+
+}
 void Enemy::Create()
 {
 	for (int i = 0; i < Game::Etype_num; i++) {

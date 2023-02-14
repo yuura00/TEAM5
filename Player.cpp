@@ -36,6 +36,7 @@ void Player::Update()
 	Move();
 	Launch();
 	Collision();
+	DPlayer.UltPoint += delta;
 }
 
 void Player::Move()

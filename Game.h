@@ -42,6 +42,7 @@ private:
 	
 	class Player* PPlayer;
 	class Enemy* PEnemy;
+	class Boss* PBoss;
 	class Map* PMap;
 	class Bullets* PBullet;
 	class Player_bullets* PPBullet;
@@ -57,6 +58,7 @@ public:
 	int GetCurState() { return CurState; }
 	class Player* GetPlayer() { return PPlayer; }
 	class Enemy* GetEnemy() { return PEnemy; }
+	class Boss* GetBoss() { return PBoss; }
 	class Map* GetMap() { return PMap; }
 	class Bullets* GetBullets() { return PBullet; }
 	class Player_bullets* GetPBullets() { return PPBullet; }

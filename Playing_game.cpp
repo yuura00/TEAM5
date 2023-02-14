@@ -15,7 +15,7 @@ void Playing_game::Create()
 	GetGame()->GetPlayer()->Create();
 	
 	GetGame()->GetEnemy()->Create();
-	
+	GetGame()->GetBoss()->Create();
 	GetGame()->GetMap()->Create();
 
 }
@@ -29,7 +29,7 @@ void Playing_game::Init()
 	GetGame()->GetPlayer()->Init();
 	
 	GetGame()->GetEnemy()->Init();
-	
+	GetGame()->GetBoss()->Init();
 	GetGame()->GetPBullets()->Init();
 	GetGame()->GetEBullets()->Init();
 }
@@ -42,6 +42,9 @@ void Playing_game::Update()
 	GetGame()->GetPlayer()->Update();
 	
 	GetGame()->GetEnemy()->Update();
+	if (GetGame()->GetEnemy()->GetKill() == Game::Enemy_num) {
+		GetGame()->GetBoss()->Update();
+	}
 	
 	GetGame()->GetPBullets()->Update();
 	GetGame()->GetEBullets()->Update();
@@ -55,8 +58,9 @@ void Playing_game::Draw()
 	GetGame()->GetPlayer()->Draw();
 	
 	GetGame()->GetEnemy()->Draw();
-	
-	
+	if (GetGame()->GetEnemy()->GetKill() == Game::Enemy_num) {
+		GetGame()->GetBoss()->Draw();
+	}
 	GetGame()->GetPBullets()->Draw();
 	GetGame()->GetEBullets()->Draw();
 
@@ -64,13 +68,16 @@ void Playing_game::Draw()
 
 void Playing_game::NextScene()
 {
-	if (GetGame()->GetPlayer()->GetHp()<=0 && GetGame()->GetCurState() != GetGame()->EPauseGame) {
+	if (GetGame()->GetPlayer()->GetHp() <= 0 && GetGame()->GetCurState() != GetGame()->EPauseGame) {
+		GetGame()->ChangeScene(GetGame()->EGameOver);
+	}
+	if (isTrigger(KEY_P) && GetGame()->GetCurState() != GetGame()->EPauseGame) {
 		GetGame()->GetPlayer()->SaveData();
 		GetGame()->GetMap()->SaveData();
 		
 		GetGame()->ChangePause(GetGame()->EPauseGame);
 	}
-	if (GetGame()->GetEnemy()->GetKill()==Game::Enemy_num) {
+	if (GetGame()->GetBoss()->GetHp()<=0) {
 		GetGame()->ChangeScene(GetGame()->EGameClear);
 	}
 }

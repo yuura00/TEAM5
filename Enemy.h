@@ -31,6 +31,7 @@ public:
         float HalfSizeW;
         float HalfSizeH;
         int Hp;
+        bool BattleFlag=false;
         float BcRadius;
         float CollisionOffSetY;
         float LaunchCoolTime;
@@ -48,12 +49,13 @@ private:
 public:
     Enemy(class Game* game);
     ~Enemy();
+    void SetEnemyData(const Data& data);
     void Create();
     void Init();
     void Update();
-    void Move();
+    virtual void Move();
     void RandomMove();
-    void Launch();
+    virtual void Launch();
     void Collision();
     void Draw();
     void SaveData();

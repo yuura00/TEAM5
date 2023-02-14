@@ -29,7 +29,7 @@ void Container::Set_data()
 	Data.title.Ws = 0;
 
 	Data.title.sw[0][0] = 0;//start
-	Data.title.sw[0][1] = 1;
+	Data.title.sw[0][1] = 1;//replay
 	Data.title.sw[0][2] = 2;//score
 	Data.title.sw[1][0] = 3;//practice
 	Data.title.sw[1][1] = 4;//option
@@ -43,6 +43,13 @@ void Container::Set_data()
 	Data.sStage.SelectSw = 0;
 	Data.sStage.StageNum = 3;
 	Data.sStage.OffSetW = 640;
+
+	//select character
+	Data.sCharacter.SelectIconPos = VECTOR2(0, 69);
+	Data.sCharacter.SelectSw = 0;
+	Data.sCharacter.OffsetX = 0;
+	Data.sCharacter.OffsetW = 640;
+	Data.sCharacter.CharacterNum = 3;
 
 	//map
 	Data.map.StageX = 600;
@@ -68,6 +75,7 @@ void Container::Set_data()
 	Data.player.CurLaunchCoolTime = 0;
 	Data.player.InvincibleTime = 0.5f;
 	Data.player.InvincibleRestTime = Data.player.InvincibleTime;
+	Data.player.UltPoint = 0;
 
 	Data.playerBullet.ImgSize = 0.5f;
 	Data.playerBullet.TotalNum = 1000;
@@ -155,6 +163,23 @@ void Container::Set_data()
 	Data.enemyBullet.BcRadius = 3.0f;
 	Data.enemyBullet.LaunchDistance = 35;
 
+	//boss
+	Data.boss.angle = 0;
+	Data.boss.Color = COLOR(255, 255, 255);
+	Data.boss.NormalColor = COLOR(255, 255, 255);
+	Data.boss.DamageColor = COLOR(200, 100, 100);
+	Data.boss.CollisionOffSetY = 0;
+	Data.boss.Pos = VECTOR2(width / 2, 200);
+	Data.boss.Vec = VECTOR2(0, 0);
+	Data.boss.LaunchVec = VECTOR2(0, 1);
+	Data.boss.BcRadius = 192/2.0f;
+	Data.boss.Hp = 1500;
+	Data.boss.Speed = 50;
+	Data.boss.MovingTime = 0;
+	Data.boss.MovingCoolTime = 0;
+	Data.boss.CurMovingCoolTime = 0;
+	Data.boss.LaunchCoolTime = 0.3f;
+	Data.boss.CurLaunchCoolTime = 0;
 }
 void Container::Load_graphic()
 {
@@ -170,6 +195,9 @@ void Container::Load_graphic()
 	Data.enemyBullet.Img = loadImage("assets\\bullet_a_red.png");
 	Data.enemyType[0].img = loadImage("assets\\Enemy1.png");
 	Data.enemyType[1].img = loadImage("assets\\Enemy2.png");
+	Data.sCharacter.GraphicImg = loadImage("assets\\CharacterSelect_V1.png");
+	Data.sCharacter.SelectIconImg = Data.sStage.SelectIconImg;
+	Data.boss.img = loadImage("assets\\boss_01.png");
 }
 
 void Container::LoadSound()
@@ -181,4 +209,6 @@ void Container::LoadSound()
 	Data.title.CursorMoveSound = Data.CursorSound;
 	Data.sStage.CursorMoveSound = Data.CursorSound;
 	Data.sStage.Decisionsound = Data.DecisionSound;
+	Data.sCharacter.CursorMoveSound = Data.CursorSound;
+	Data.sCharacter.DecisionSound = Data.DecisionSound;
 }

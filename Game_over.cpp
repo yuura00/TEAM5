@@ -23,7 +23,7 @@ void Game_over::Draw()
 
 void Game_over::NextScene()
 {
-	if (isTrigger(KEY_SPACE)) {
+	if (isTrigger(KEY_Z)) {
 		GetGame()->ChangeScene(GetGame()->ESStage);
 	}
 	

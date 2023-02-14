@@ -72,6 +72,8 @@
     </ClCompile>
     <ClCompile Include="Game_clear.cpp" />
     <ClCompile Include="Game_over.cpp" />
+    <ClCompile Include="Boss.cpp" />
+    <ClCompile Include="Enemy_no1.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="resource.rc">
@@ -126,5 +128,7 @@
     </ClInclude>
     <ClInclude Include="Game_clear.h" />
     <ClInclude Include="Game_over.h" />
+    <ClInclude Include="Boss.h" />
+    <ClInclude Include="Enemy_no1.h" />
   </ItemGroup>
 </Project>

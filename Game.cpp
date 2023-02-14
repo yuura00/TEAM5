@@ -54,8 +54,8 @@ void Game::Shutdown()
 	}
 	SAFE_DELETE(PContainer);
 	SAFE_DELETE(PPlayer);
-	
 	SAFE_DELETE(PEnemy);
+	SAFE_DELETE(PBoss);
 
 	SAFE_DELETE(PMap);
 	SAFE_DELETE(PBullet);
@@ -77,9 +77,8 @@ void Game::UpdateGame()
 		CreateScene(NextScene);
 		if ((NextScene ==EGameClear|| NextScene ==EGameOver) ){
 			SAFE_DELETE(PPlayer);
-			
 			SAFE_DELETE(PEnemy);
-			
+			SAFE_DELETE(PBoss);
 			SAFE_DELETE(PMap);
 			SAFE_DELETE(PBullet);
 			SAFE_DELETE(PPBullet);
@@ -89,7 +88,7 @@ void Game::UpdateGame()
 		
 		if (PauseSw != true) {
 			Scene[CurState]->Create();
-			Scene[CurState]->Init();
+  			Scene[CurState]->Init();
 		}
 		PauseSw = false;
 	}
@@ -133,10 +132,8 @@ void Game::CreateScene(State i)
 			if (PauseSw != true) {
 				Scene[EPlaying] = new Playing_game(this);
 				PPlayer = new Player(this);
-				
 				PEnemy = new Enemy(this);
-				
-				
+				PBoss = new Boss(this);
 				PMap = new Map(this);
 				PBullet = new Bullets(this);
 				PPBullet = new Player_bullets(this);
