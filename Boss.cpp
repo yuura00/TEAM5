@@ -1,12 +1,15 @@
 #include "Boss.h"
 #include"Game.h"
 #include"Container.h"
+#include"Enemy_bullets.h"
+#include"Boss_bullets.h"
 #include"graphic.h"
 #include"input.h"
 #include"window.h"
 #include"mathUtil.h"
 #include<stdlib.h>
 #include<time.h>
+#include"rand.h"
 //#include"Boss_bullets.h"
 #include"Player_bullets.h"
 void Boss::Create()
@@ -32,6 +35,7 @@ void Boss::Update()
 
 void Boss::Move()
 {
+
 	RandomMove();
 
 		if (DBoss.Pos.x - DBoss.BcRadius <= GetGame()->GetMap()->GetStageX()) {
@@ -93,8 +97,15 @@ void Boss::Launch()
 	if (DBoss.CurLaunchCoolTime >= DBoss.LaunchCoolTime) {
 		VECTOR2 playerPos = GetGame()->GetPlayer()->GetPos();
 		DBoss.LaunchVec = normalize(VECTOR2(playerPos.x - DBoss.Pos.x, playerPos.y - DBoss.Pos.y));
-
-		//GetGame()->GetEBullets()->Launch(DBoss.Pos, DBoss.LaunchVec);
+		srand((unsigned int)time(NULL));
+		int bNum = rand() % 2;
+		if (bNum == 0) {
+			GetGame()->GetBBullets()->Launch(DBoss.Pos, DBoss.LaunchVec);
+		}
+		else {
+			GetGame()->GetEBullets(0)->Launch(DBoss.Pos, DBoss.LaunchVec);
+		}
+		
 		DBoss.CurLaunchCoolTime = 0;
 
 	}
@@ -153,6 +164,10 @@ void Boss::SetData()
 	}
 		
 	
+}
+
+void Boss::Kill(int no)
+{
 }
 
 

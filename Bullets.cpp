@@ -20,6 +20,10 @@ Bullets::~Bullets()
 	SAFE_DELETE_ARRAY(PBullets);
 }
 
+void Bullets::Create()
+{
+}
+
 
 void Bullets::Init()
 {
@@ -28,19 +32,24 @@ void Bullets::Init()
 
 void Bullets::Launch(const VECTOR2& pos, const VECTOR2& vec)
 {
+	
 	if (PBullet.CurNum < PBullet.TotalNum) {
 		int i = PBullet.CurNum;
+		
 		PBullets[i].Pos = pos + vec * PBullet.LaunchDistance;
 		PBullets[i].Vec = vec;
 		PBullets[i].Angle = 0;
+		
 		PBullet.CurNum++;
 	}
 }
 
 void Bullets::Update()
 {
+	
 	for (int i = PBullet.CurNum - 1; i >= 0; i--) {
 		//move
+		
 		PBullets[i].Pos += PBullets[i].Vec * (PBullet.AdvSpeed * delta);
 		PBullets[i].Angle += PBullet.AngSpeed;
 		//ウィンドウの外に出たら

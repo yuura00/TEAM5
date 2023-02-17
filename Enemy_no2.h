@@ -1,11 +1,11 @@
 #pragma once
 #include "Enemy.h"
-class Enemy_no1 :
+class Enemy_no2:
 
     public Enemy
 {
 public:
-    Enemy_no1(class Game* game,int i);
+    Enemy_no2(class Game* game, int i);
     void Create();
-
+    
 };

@@ -7,17 +7,13 @@ class Enemy :
 {
 public:
     bool CheckError = false;
-    int KillCnt = 0;
-    struct TypeData {
-        int Hp;
-        float BcRadius;
-        float Speed;
-        int img = 0;
-        float LaunchCoolTime;
-    };
+    int t;
+    int EnemyNo;
+    int KillCnt=0;
+    bool Life=true;
+  
     struct Data {
         int EnemyType;
-        
         int img = 0;
         float angle = 180;
         
@@ -25,6 +21,8 @@ public:
         COLOR NormalColor;
         COLOR DamageColor;
         VECTOR2 Pos;
+        float InitPosY;
+        float OffSetY;
         VECTOR2 Vec;
         VECTOR2 LaunchVec;
         float Speed;
@@ -43,15 +41,15 @@ public:
     };
    
 private:
-    Data DEnemy[Game::Enemy_num];
-    Data DPauseGame[Game::Enemy_num];
-    TypeData TData[Game::Etype_num];
+    Data DEnemy;
+    Data DPauseGame;
+    
 public:
     Enemy(class Game* game);
-    ~Enemy();
-    void SetEnemyData(const Data& data);
-    void Create();
-    void Init();
+    
+    void SetData(const Data& data);
+    virtual void Create();
+    void Init(int enemyNo);
     void Update();
     virtual void Move();
     void RandomMove();
@@ -60,11 +58,11 @@ public:
     void Draw();
     void SaveData();
     void SetData();
-    void Kill(int no);
+   
 
 
-    VECTOR2 GetPos(int enemyNo) { return DEnemy[enemyNo].Pos; }
-    int GetHp(int enemyNo) { return DEnemy[enemyNo].Hp; }
-    int GetKill() { return KillCnt; }
+    VECTOR2 GetPos() { return DEnemy.Pos; }
+    int GetHp() { return DEnemy.Hp; }
+   
 };
 

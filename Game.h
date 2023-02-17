@@ -13,6 +13,43 @@ public:
 		EnemyNo1,
 		EnemyNo2,
 		EnemyNo3,
+		EnemyNo4,
+		EnemyNo5,
+		EnemyNo6,
+		EnemyNo7,
+		EnemyNo8,
+		Enemyno9,
+		EnemyNo10,
+		EnemyNo11,
+		EnemyNo12,
+		EnemyNo13,
+		EnemyNo14,
+		EnemyNo15,
+		EnemyNo16,
+		EnemyNo17,
+		EnemyNo18,
+		EnemyNo19,
+		EnemyNo20,
+		EnemyNo21,
+		EnemyNo22,
+		EnemyNo23,
+		EnemyNo24,
+		EnemyNo25,
+		EnemyNo26,
+		EnemyNo27,
+		EnemyNo28,
+		Enemyno29,
+		EnemyNo30,
+		EnemyNo31,
+		EnemyNo32,
+		EnemyNo33,
+		EnemyNo34,
+		EnemyNo35,
+		EnemyNo36,
+		EnemyNo37,
+		EnemyNo38,
+		EnemyNo39,
+		EnemyNo40,
 		Enemy_num,
 	};
 	enum State {
@@ -41,12 +78,13 @@ private:
 	
 	
 	class Player* PPlayer;
-	class Enemy* PEnemy;
+	class Enemy* PEnemy[Enemy_num];
 	class Boss* PBoss;
 	class Map* PMap;
 	class Bullets* PBullet;
 	class Player_bullets* PPBullet;
-	class Enemy_bullets* PEBullet;
+	class Bullets* PEBullet[Etype_num];
+	class Boss_bullets* PBBullet;
 public:
 	bool Initialize();
 	void RunLoop();
@@ -55,14 +93,18 @@ public:
 	void ChangePause(State state);
 	void CreateScene(State i);
 	
+
 	int GetCurState() { return CurState; }
 	class Player* GetPlayer() { return PPlayer; }
-	class Enemy* GetEnemy() { return PEnemy; }
+	class Enemy* GetEnemy(int enemyNo) { return PEnemy[enemyNo]; }
+	void EnemyDataMove(int enemyNo,int& killCnt);
+	void DeleteEnemy(int enemyNo);
 	class Boss* GetBoss() { return PBoss; }
 	class Map* GetMap() { return PMap; }
 	class Bullets* GetBullets() { return PBullet; }
 	class Player_bullets* GetPBullets() { return PPBullet; }
-	class Enemy_bullets* GetEBullets() { return PEBullet; }
+	class Bullets* GetEBullets(int i) { return PEBullet[i]; }
+	class Boss_bullets* GetBBullets() { return PBBullet; }
 	
 private:
 	void ProcessInput();

@@ -28,15 +28,18 @@ void Map::Update()
 	if (DMap.BackGroundPos[2].y > height) {
 		DMap.BackGroundPos[2].y = DMap.BackGroundPos[1].y - height+3;
 	}
-
+	DMap.WorldY -= sp;
+	if (DMap.WorldY <= DMap.BossFazeY) {
+		DMap.BossFlag = true;
+	}
 }
 
 void Map::Draw()
 {
 	rectMode(CORNER);
-	
+	image(DMap.SideImg, 0, 0);
 	for (int i = 0; i < DMap.BackGroundImgNum; i++) {
-		image(DMap.BackGroundStageNo1, DMap.BackGroundPos[i].x, DMap.BackGroundPos[i].y);
+		image(DMap.BackGroundStageNo3, DMap.BackGroundPos[i].x, DMap.BackGroundPos[i].y);
 	}
 	
 }

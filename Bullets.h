@@ -6,6 +6,7 @@ class Bullets :
 {
 public:
     struct Data {
+        int EnemyNum = 0;
         int Img = 0;
         float ImgSize = 0;
         int TotalNum;
@@ -29,6 +30,7 @@ private:
 public:
     Bullets(class Game* game);
     virtual ~Bullets();
+    virtual void Create();
     void Init();
     void Launch(const VECTOR2& pos, const VECTOR2& vec);
     void Update();
@@ -40,5 +42,6 @@ public:
     int GetCurNum() { return PBullet.CurNum; }
     float GetBcRadius() { return PBullet.BcRadius; }
     int GetDamage() { return PBullet.Damage; }
+    int GetEnemyNum() { return PBullet.EnemyNum; }
 };
 

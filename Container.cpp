@@ -53,11 +53,16 @@ void Container::Set_data()
 
 	//map
 	Data.map.StageX = 600;
+	Data.map.StageY = 6000;
 	Data.map.BackGroundPos [0] = VECTOR2(Data.map.StageX, 0);
 	Data.map.BackGroundPos[1] = VECTOR2(Data.map.StageX, Data.map.BackGroundPos[0].y - height +3);
 	Data.map.BackGroundPos[2] = VECTOR2(Data.map.StageX, Data.map.BackGroundPos[1].y - height + 3);
 	Data.map.BackGroundImgNum = 3;
 	Data.map.ScrollSpeed = 100;
+	Data.map.BossFazeY = -6000;
+	Data.map.WorldY = 0;
+	Data.map.BossFlag = false;
+	Data.map.battleW = 720;
 
 	//player
 	Data.player.Color = COLOR(255,255,255);
@@ -81,61 +86,53 @@ void Container::Set_data()
 	Data.playerBullet.TotalNum = 1000;
 	Data.playerBullet.CurNum = 0;
 	Data.playerBullet.Damage = 100;
-	Data.playerBullet.AdvSpeed = 300;
+	Data.playerBullet.AdvSpeed = 400;
 	Data.playerBullet.AngSpeed = 0;
 	Data.playerBullet.BcRadius = 3.0f;
 	Data.playerBullet.LaunchDistance = 35;
 
 	//enemy
-	Data.enemyType[0].Hp = 100;
-	Data.enemyType[0].BcRadius = 25;
-	Data.enemyType[0].Speed = 10;
-	Data.enemyType[0].LaunchCoolTime = 0.3f;
-	
-	Data.enemyType[1].Hp = 300;
-	Data.enemyType[1].BcRadius = 25;
-	Data.enemyType[1].Speed = 10;
-	Data.enemyType[1].LaunchCoolTime = 0.3f;
-
 	Data.enemy[0].EnemyType = 0;
 	Data.enemy[0].Color = COLOR(255, 255, 255);
 	Data.enemy[0].NormalColor = COLOR(255, 255, 255);
 	Data.enemy[0].DamageColor = COLOR(200, 100, 100);
-	Data.enemy[0].CollisionOffSetY = 0;
-	Data.enemy[0].Pos = VECTOR2(width / 2, 100);
+	Data.enemy[0].CollisionOffSetY = -10;
+	Data.enemy[0].Pos = VECTOR2(640, -300);
+	Data.enemy[0].InitPosY = -300;
 	Data.enemy[0].Vec = VECTOR2(0, 0);
 	Data.enemy[0].LaunchVec = VECTOR2(0, 1);
-	Data.enemy[0].BcRadius = 25;
-	Data.enemy[0].Hp = 100;
+	Data.enemy[0].BcRadius = 35;
+	Data.enemy[0].Hp = 300;
 	Data.enemy[0].HalfSizeW = 50 / 2.0f;
 	Data.enemy[0].HalfSizeH = 50 / 2.0f;
-	Data.enemy[0].Speed = 10;
+	Data.enemy[0].Speed = 200;
 	Data.enemy[0].MovingTime = 0;
 	Data.enemy[0].MovingCoolTime = 0;
 	Data.enemy[0].CurMovingCoolTime = 0;
-	Data.enemy[0].LaunchCoolTime = 0.3f;
+	Data.enemy[0].LaunchCoolTime = 0.7f;
 	Data.enemy[0].CurLaunchCoolTime = 0;
 
-	Data.enemy[1].EnemyType = 0;
+	Data.enemy[1].EnemyType = 1;
 	Data.enemy[1].Color = COLOR(255, 255, 255);
 	Data.enemy[1].NormalColor = COLOR(255, 255, 255);
 	Data.enemy[1].DamageColor = COLOR(200, 100, 100);
-	Data.enemy[1].CollisionOffSetY = 0;
-	Data.enemy[1].Pos = VECTOR2(width / 2+100, 100);
+	Data.enemy[1].CollisionOffSetY = -20;
+	Data.enemy[1].Pos = VECTOR2(width / 2, -300);
+	Data.enemy[1].InitPosY = -300;
 	Data.enemy[1].Vec = VECTOR2(0, 0);
 	Data.enemy[1].LaunchVec = VECTOR2(0, 1);
-	Data.enemy[1].BcRadius = 25;
-	Data.enemy[1].Hp = 100;
+	Data.enemy[1].BcRadius = 45;
+	Data.enemy[1].Hp = 150;
 	Data.enemy[1].HalfSizeW = 50 / 2.0f;
 	Data.enemy[1].HalfSizeH = 50 / 2.0f;
-	Data.enemy[1].Speed = 50;
+	Data.enemy[1].Speed = 300;
 	Data.enemy[1].MovingTime = 0;
-	Data.enemy[1].MovingCoolTime = 0;
+	Data.enemy[1].MovingCoolTime = 2.0f;
 	Data.enemy[1].CurMovingCoolTime = 0;
 	Data.enemy[1].LaunchCoolTime = 0.3f;
 	Data.enemy[1].CurLaunchCoolTime = 0;
 
-	Data.enemy[2].EnemyType = 1;
+
 	Data.enemy[2].Color = COLOR(255, 255, 255);
 	Data.enemy[2].NormalColor = COLOR(255, 255, 255);
 	Data.enemy[2].DamageColor = COLOR(200, 100, 100);
@@ -144,24 +141,35 @@ void Container::Set_data()
 	Data.enemy[2].Vec = VECTOR2(0, 0);
 	Data.enemy[2].LaunchVec = VECTOR2(0, 1);
 	Data.enemy[2].BcRadius = 25;
-	Data.enemy[2].Hp = 100;
+	Data.enemy[2].Hp = 300;
 	Data.enemy[2].HalfSizeW = 50 / 2.0f;
 	Data.enemy[2].HalfSizeH = 50 / 2.0f;
 	Data.enemy[2].Speed = 100;
 	Data.enemy[2].MovingTime = 0;
 	Data.enemy[2].MovingCoolTime = 0;
 	Data.enemy[2].CurMovingCoolTime = 0;
-	Data.enemy[2].LaunchCoolTime = 0.3f;
+	Data.enemy[2].LaunchCoolTime = 0.01f;
 	Data.enemy[2].CurLaunchCoolTime = 0;
 
-	Data.enemyBullet.ImgSize = 0.5f;
-	Data.enemyBullet.TotalNum = 50;
-	Data.enemyBullet.CurNum = 0;
-	Data.enemyBullet.Damage = 10;
-	Data.enemyBullet.AdvSpeed = 300;
-	Data.enemyBullet.AngSpeed = 0;
-	Data.enemyBullet.BcRadius = 3.0f;
-	Data.enemyBullet.LaunchDistance = 35;
+	Data.enemyBullet[0].EnemyNum = 0;
+	Data.enemyBullet[0].ImgSize = 0.5f;
+	Data.enemyBullet[0].TotalNum = 50;
+	Data.enemyBullet[0].CurNum = 0;
+	Data.enemyBullet[0].Damage = 10;
+	Data.enemyBullet[0].AdvSpeed = 300;
+	Data.enemyBullet[0].AngSpeed = 0;
+	Data.enemyBullet[0].BcRadius = 3.0f;
+	Data.enemyBullet[0].LaunchDistance = 35;
+
+	Data.enemyBullet[1].EnemyNum = 1;
+	Data.enemyBullet[1].ImgSize = 0.5f;
+	Data.enemyBullet[1].TotalNum = 5;
+	Data.enemyBullet[1].CurNum = 0;
+	Data.enemyBullet[1].Damage = 5;
+	Data.enemyBullet[1].AdvSpeed = 500;
+	Data.enemyBullet[1].AngSpeed = 0;
+	Data.enemyBullet[1].BcRadius = 3.0f;
+	Data.enemyBullet[1].LaunchDistance = 35;
 
 	//boss
 	Data.boss.angle = 0;
@@ -169,35 +177,47 @@ void Container::Set_data()
 	Data.boss.NormalColor = COLOR(255, 255, 255);
 	Data.boss.DamageColor = COLOR(200, 100, 100);
 	Data.boss.CollisionOffSetY = 0;
-	Data.boss.Pos = VECTOR2(width / 2, 200);
+	Data.boss.Pos = VECTOR2(width / 2, -6000);
 	Data.boss.Vec = VECTOR2(0, 0);
 	Data.boss.LaunchVec = VECTOR2(0, 1);
 	Data.boss.BcRadius = 192/2.0f;
-	Data.boss.Hp = 1500;
-	Data.boss.Speed = 50;
+	Data.boss.Hp = 3000;
+	Data.boss.Speed = 30;
 	Data.boss.MovingTime = 0;
 	Data.boss.MovingCoolTime = 0;
 	Data.boss.CurMovingCoolTime = 0;
-	Data.boss.LaunchCoolTime = 0.3f;
+	Data.boss.LaunchCoolTime = 0.5f;
 	Data.boss.CurLaunchCoolTime = 0;
+
+	Data.bossBullets.ImgSize = 1.0f;
+	Data.bossBullets.TotalNum = 1;
+	Data.bossBullets.CurNum = 0;
+	Data.bossBullets.Damage = 50;
+	Data.bossBullets.AdvSpeed = 200;
+	Data.bossBullets.AngSpeed = 0;
+	Data.bossBullets.BcRadius = 36.0f;
+	Data.bossBullets.LaunchDistance = 35;
 }
 void Container::Load_graphic()
 {
 	Data.title.TitleImg = loadImage("assets\\Title.png");
 	Data.sStage.BackImg = loadImage("assets\\stageSelect_V3_b.png");
 	Data.sStage.SelectIconImg = loadImage("assets\\Select_Icon_v2_a.png");
-	Data.map.BackGroundStageNo1 = loadImage("assets\\loop_02.png");
+	Data.map.BackGroundStageNo3 = loadImage("assets\\loop_02.png");
+	Data.map.SideImg = loadImage("assets\\UI_v2_a.png");
 	Data.player.Img = loadImage("assets\\Player3.png");
 	Data.GameClearImg = loadImage("assets\\GameClear.png");
 	Data.GameOverImg = loadImage("assets\\GameOver.png");
 	
 	Data.playerBullet.Img = loadImage("assets\\bullet_a_blue.png");
-	Data.enemyBullet.Img = loadImage("assets\\bullet_a_red.png");
-	Data.enemyType[0].img = loadImage("assets\\Enemy1.png");
-	Data.enemyType[1].img = loadImage("assets\\Enemy2.png");
+	Data.enemyBullet[0].Img = loadImage("assets\\bullet_a_red.png");
+	Data.enemyBullet[1].Img= loadImage("assets\\bullet_b_yellow.png");
+	Data.enemy[0].img = loadImage("assets\\Enemy1.png");
+	Data.enemy[1].img = loadImage("assets\\Enemy2.png");
 	Data.sCharacter.GraphicImg = loadImage("assets\\CharacterSelect_V1.png");
 	Data.sCharacter.SelectIconImg = Data.sStage.SelectIconImg;
 	Data.boss.img = loadImage("assets\\boss_01.png");
+	Data.bossBullets.Img = loadImage("assets\\boss_bullet_a.png");
 }
 
 void Container::LoadSound()

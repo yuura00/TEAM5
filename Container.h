@@ -23,9 +23,10 @@ private:
         Player::Data player;
         Enemy::Data enemy[Game::Enemy_num];
         Boss::Data boss;
-        Enemy::TypeData enemyType[Game::Etype_num];
+        
         Bullets::Data playerBullet;
-        Bullets::Data enemyBullet;
+        Bullets::Data enemyBullet[2];
+        Bullets::Data bossBullets;
         
         Map::Data map;
         int CursorSound;

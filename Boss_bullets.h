@@ -1,12 +1,10 @@
 #pragma once
 #include "Bullets.h"
-class Enemy_bullets :
+class Boss_bullets :
     public Bullets
 {
 public:
-    int ENum;
-
-    Enemy_bullets(class Game* game);
+    Boss_bullets(class Game* game):Bullets(game){}
     void Create();
-    
 };
+

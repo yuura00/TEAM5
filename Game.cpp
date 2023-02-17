@@ -10,9 +10,13 @@
 #include"Pause_game.h"
 #include"Container.h"
 #include"Player.h"
+#include"Enemy_no1.h"
+#include"Enemy_no2.h"
 #include"Map.h"
 #include"Player_bullets.h"
 #include"Enemy_bullets.h"
+#include"Enemy_bullets_no2.h"
+#include"Boss_bullets.h"
 #include"Game_clear.h"
 #include"Game_over.h"
 
@@ -54,13 +58,19 @@ void Game::Shutdown()
 	}
 	SAFE_DELETE(PContainer);
 	SAFE_DELETE(PPlayer);
-	SAFE_DELETE(PEnemy);
+	for (int i = 0; i < Enemy_num; i++) {
+		SAFE_DELETE(PEnemy[i]);
+	}
+	
 	SAFE_DELETE(PBoss);
 
 	SAFE_DELETE(PMap);
 	SAFE_DELETE(PBullet);
 	SAFE_DELETE(PPBullet);
-	SAFE_DELETE(PEBullet);
+	SAFE_DELETE(PEBullet[0]);
+	SAFE_DELETE(PEBullet[1]);
+
+	
 	closeWindow();
 
 }
@@ -77,12 +87,20 @@ void Game::UpdateGame()
 		CreateScene(NextScene);
 		if ((NextScene ==EGameClear|| NextScene ==EGameOver) ){
 			SAFE_DELETE(PPlayer);
-			SAFE_DELETE(PEnemy);
+			
+			for (int i = 0; i < Enemy_num; i++) {
+				SAFE_DELETE(PEnemy[i]);
+			}
+		
+			
 			SAFE_DELETE(PBoss);
 			SAFE_DELETE(PMap);
 			SAFE_DELETE(PBullet);
 			SAFE_DELETE(PPBullet);
-			SAFE_DELETE(PEBullet);
+			SAFE_DELETE(PEBullet[0]);
+			SAFE_DELETE(PEBullet[1]);
+
+
 		}
 		CurState = NextScene;
 		
@@ -132,12 +150,22 @@ void Game::CreateScene(State i)
 			if (PauseSw != true) {
 				Scene[EPlaying] = new Playing_game(this);
 				PPlayer = new Player(this);
-				PEnemy = new Enemy(this);
+				for (int i = 0; i < Enemy_num; i++) {
+					if (i % 4 == 0) {
+						PEnemy[i] = new Enemy_no2(this, i);
+					}
+					else {
+						PEnemy[i] = new Enemy_no1(this, i);
+					}
+				}
 				PBoss = new Boss(this);
 				PMap = new Map(this);
 				PBullet = new Bullets(this);
 				PPBullet = new Player_bullets(this);
-				PEBullet= new Enemy_bullets(this);
+
+				PEBullet[0] = new Enemy_bullets(this);
+				PEBullet[1] = new Enemy_bullets_no2(this);
+				PBBullet = new Boss_bullets(this);
 			}
 			break;
 		case EPauseGame:
@@ -157,6 +185,26 @@ void Game::CreateScene(State i)
 		
 
 }
+
+void Game::EnemyDataMove(int enemyNo,int& killCnt)
+{
+	
+	int no = 0;
+	for (int i = enemyNo; i < Enemy_num - 1-killCnt; i++) {
+		PEnemy[i] = PEnemy[i + 1];
+		PEnemy[i]->EnemyNo = i;
+		no = i + 1;
+	}
+	killCnt++;
+	SAFE_DELETE(PEnemy[no]);
+}
+
+void Game::DeleteEnemy(int enemyNo)
+{
+	SAFE_DELETE(PEnemy[enemyNo]); 
+}
+
+
 
 
 

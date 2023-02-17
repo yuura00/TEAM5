@@ -6,6 +6,7 @@
 #include"window.h"
 #include"Player_bullets.h"
 #include"Enemy_bullets.h"
+#include"Boss_bullets.h"
 #include"sound.h"
 Player::Player(Game* game)
 	:Game_object(game)
@@ -32,7 +33,9 @@ void Player::Init()
 
 void Player::Update()
 {
-	
+	if (isTrigger(KEY_C)) {
+		DPlayer.Hp = 100;
+	}
 	Move();
 	Launch();
 	Collision();
@@ -83,24 +86,46 @@ void Player::Collision()
 	}
 	else {
 		//collision distance
-		Bullets* bullets = GetGame()->GetEBullets();
-		float distance = DPlayer.BcRadius+ bullets->GetBcRadius();
+		Boss_bullets* bossBullets = GetGame()->GetBBullets();
+		float distance = DPlayer.BcRadius + bossBullets->GetBcRadius();
 		float sqDistance = distance * distance;
-		//player collision
-		int curNum = bullets->GetCurNum();
+		int curNum = bossBullets->GetCurNum();
 		DPlayer.Color = DPlayer.NormalColor;
 		for (int i = curNum - 1; i >= 0; i--) {
 			VECTOR2 playerPos = DPlayer.Pos;
 			playerPos.y -= DPlayer.CollisionOffSetY;
-			VECTOR2 vec = playerPos - bullets->GetPos(i);
+			VECTOR2 vec = playerPos - bossBullets->GetPos(i);
 			if (vec.sqMag() < sqDistance) {
-				DPlayer.Hp -= bullets->GetDamage();
+				DPlayer.Hp -= bossBullets->GetDamage();
 				DPlayer.Color = DPlayer.DamageColor;
 				DPlayer.InvincibleRestTime = DPlayer.InvincibleTime;
-				bullets->Kill(i);
+				bossBullets->Kill(i);
 				i = 0;
 			}
 		}
+		Bullets* bullets[Game::Etype_num];
+		for (int j = 0; j < Game::Etype_num;j++) {
+			
+			bullets[j] = GetGame()->GetEBullets(j);
+			distance = DPlayer.BcRadius + bullets[j]->GetBcRadius();
+			sqDistance = distance * distance;
+			//player collision
+			int curNum = bullets[j]->GetCurNum();
+			
+			for (int i = curNum - 1; i >= 0; i--) {
+				VECTOR2 playerPos = DPlayer.Pos;
+				playerPos.y -= DPlayer.CollisionOffSetY;
+				VECTOR2 vec = playerPos - bullets[j]->GetPos(i);
+				if (vec.sqMag() < sqDistance) {
+					DPlayer.Hp -= bullets[j]->GetDamage();
+					DPlayer.Color = DPlayer.DamageColor;
+					DPlayer.InvincibleRestTime = DPlayer.InvincibleTime;
+					bullets[j]->Kill(i);
+					i = 0;
+				}
+			}
+		}
+		
 	}
 }
 
