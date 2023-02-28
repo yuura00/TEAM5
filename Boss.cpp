@@ -125,7 +125,7 @@ void Boss::Collision()
 		BossPos.y -= DBoss.CollisionOffSetY;
 		VECTOR2 vec = BossPos - bullets->GetPos(j);
 		if (vec.sqMag() < sqDistance) {
-			DBoss.Hp -= bullets->GetDamage();
+			DBoss.Hp -= GetGame()->GetPlayer()->GetDmg();
 			DBoss.Color = DBoss.DamageColor;
 
 			bullets->Kill(j);
@@ -141,7 +141,7 @@ void Boss::Draw()
 	angleMode(DEGREES);
 	image(DBoss.img, DBoss.Pos.x, DBoss.Pos.y, DBoss.angle);
 	fill(DBoss.Color.r, DBoss.Color.g, DBoss.Color.b, 125);
-	circle(DBoss.Pos.x, DBoss.Pos.y, DBoss.BcRadius * 2);
+	//circle(DBoss.Pos.x, DBoss.Pos.y, DBoss.BcRadius * 2);
 	print(DBoss.Hp);
 
 }

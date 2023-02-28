@@ -55,6 +55,7 @@ public:
 	enum State {
 		ETitle,
 		ESStage,ESChara,
+		ESMachine,
 		EPlaying,
 		EPauseGame,
 		EGameClear,
@@ -62,18 +63,28 @@ public:
 		State_num
 
 	};
+	enum Type_machine {
+		Goliath,
+		Gleipnir,
+		Hameln,
+		MType_num
+	};
 	enum Type_enemy {
 		TypeNo1,
 		Typeno2,
-		Etype_num
+		EType_num
 	};
 	bool PauseSw=false;
 	State NextScene=ETitle;
 	State CurState=ETitle;
 	
-	
+	struct SelectInfo {
+		int MachineNum = 0;
+		int CharaNum=0;
+	};
 	
 private:
+	SelectInfo SI;
 	class Scene* Scene[State_num];
 	
 	
@@ -83,7 +94,7 @@ private:
 	class Map* PMap;
 	class Bullets* PBullet;
 	class Player_bullets* PPBullet;
-	class Bullets* PEBullet[Etype_num];
+	class Bullets* PEBullet[EType_num];
 	class Boss_bullets* PBBullet;
 public:
 	bool Initialize();
@@ -105,7 +116,11 @@ public:
 	class Player_bullets* GetPBullets() { return PPBullet; }
 	class Bullets* GetEBullets(int i) { return PEBullet[i]; }
 	class Boss_bullets* GetBBullets() { return PBBullet; }
-	
+	int GetMachineNum() { return SI.MachineNum; }
+	int GetCharaNum() { return SI.CharaNum; }
+	void SetMachineNum(int i) { SI.MachineNum = i; }
+	void SetCharaNum(int i) { SI.CharaNum = i; }
+
 private:
 	void ProcessInput();
 	void UpdateGame();

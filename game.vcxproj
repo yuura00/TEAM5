@@ -152,9 +152,13 @@
     <ClCompile Include="Pause_game.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Player_bullets.cpp" />
+    <ClCompile Include="Player_no1.cpp" />
+    <ClCompile Include="Player_no2.cpp" />
+    <ClCompile Include="Player_no3.cpp" />
     <ClCompile Include="Playing_game.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="Select_character.cpp" />
+    <ClCompile Include="Select_machine.cpp" />
     <ClCompile Include="Select_stage.cpp" />
     <ClCompile Include="Title.cpp" />
   </ItemGroup>
@@ -184,9 +188,13 @@
     <ClInclude Include="Pause_game.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Player_bullets.h" />
+    <ClInclude Include="Player_no1.h" />
+    <ClInclude Include="Player_no2.h" />
+    <ClInclude Include="Player_no3.h" />
     <ClInclude Include="Playing_game.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="Select_character.h" />
+    <ClInclude Include="Select_machine.h" />
     <ClInclude Include="Select_stage.h" />
     <ClInclude Include="Title.h" />
   </ItemGroup>

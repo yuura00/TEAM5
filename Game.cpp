@@ -6,10 +6,14 @@
 #include"Title.h"
 #include"Select_stage.h"
 #include"Select_character.h"
+#include"Select_machine.h"
 #include"Playing_game.h"
 #include"Pause_game.h"
 #include"Container.h"
 #include"Player.h"
+#include"Player_no1.h"
+#include"Player_no2.h"
+#include"Player_no3.h"
 #include"Enemy_no1.h"
 #include"Enemy_no2.h"
 #include"Map.h"
@@ -66,6 +70,7 @@ void Game::Shutdown()
 
 	SAFE_DELETE(PMap);
 	SAFE_DELETE(PBullet);
+	SAFE_DELETE(PBBullet);
 	SAFE_DELETE(PPBullet);
 	SAFE_DELETE(PEBullet[0]);
 	SAFE_DELETE(PEBullet[1]);
@@ -97,6 +102,7 @@ void Game::UpdateGame()
 			SAFE_DELETE(PMap);
 			SAFE_DELETE(PBullet);
 			SAFE_DELETE(PPBullet);
+			SAFE_DELETE(PBBullet);
 			SAFE_DELETE(PEBullet[0]);
 			SAFE_DELETE(PEBullet[1]);
 
@@ -144,12 +150,27 @@ void Game::CreateScene(State i)
 			SAFE_DELETE(Scene[CurState]);
 			Scene[ESChara] = new Select_character(this);
 			break;
+		case ESMachine:
+			SAFE_DELETE(Scene[CurState]);
+			Scene[ESMachine] = new Select_machine(this);
+			break;
 		case EPlaying:
 			
 			SAFE_DELETE(Scene[CurState]);
 			if (PauseSw != true) {
 				Scene[EPlaying] = new Playing_game(this);
-				PPlayer = new Player(this);
+				switch (SI.MachineNum) {
+				case 0:
+					PPlayer = new Player_no1(this);
+					break;
+				case 1:
+					PPlayer = new Player_no2(this);
+					break;
+				case 2:
+					PPlayer = new Player_no3(this);
+					break;
+				}
+				
 				for (int i = 0; i < Enemy_num; i++) {
 					if (i % 4 == 0) {
 						PEnemy[i] = new Enemy_no2(this, i);

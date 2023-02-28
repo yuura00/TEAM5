@@ -17,17 +17,26 @@ Player::Player(Game* game)
 Player::~Player()
 {
 }
+void Player::SetData(const Data& data)
+{
+	DPlayer = data;
+}
 void Player::Create()
 {
-	DPlayer = GetGame()->GetContainer()->GetData().player;
-	GetGame()->GetPBullets()->Create();
+	
 }
 
 void Player::Init()
 {
-	const Data& dplayer = GetGame()->GetContainer()->GetData().player;
-	DPlayer.Pos =dplayer.Pos;
-	DPlayer.Hp = dplayer.Hp;
+	const Data& p = GetGame()->GetContainer()->GetData().player[GetGame()->GetMachineNum()];
+	int cHp = GetGame()->GetContainer()->GetData().chara[GetGame()->GetCharaNum()].Hp;
+	int cSp = GetGame()->GetContainer()->GetData().chara[GetGame()->GetCharaNum()].Speed;
+	int cDmg = GetGame()->GetContainer()->GetData().chara[GetGame()->GetCharaNum()].Damage;
+
+	DPlayer.Pos =p.Pos;
+	DPlayer.Hp = p.Hp+cHp;
+	DPlayer.Speed = p.Speed + cSp;
+	DPlayer.Damage = p.Speed + cDmg;
 	
 }
 
@@ -39,7 +48,12 @@ void Player::Update()
 	Move();
 	Launch();
 	Collision();
-	DPlayer.UltPoint += delta;
+	DPlayer.CurUltDeltaTime += delta;
+	if (DPlayer.UltChargeSp <= DPlayer.CurUltDeltaTime) {
+		DPlayer.UltPoint++;
+		DPlayer.CurUltDeltaTime = 0;
+	}
+	
 }
 
 void Player::Move()
@@ -65,17 +79,19 @@ void Player::Move()
 
 void Player::Launch()
 {
-
-	if (isPress(KEY_SPACE)) {
+	
+	if (isPress(KEY_SPACE)&&DPlayer.TriggerCooltime<=0) {
 		DPlayer.CurLaunchCoolTime += delta;
 		if (DPlayer.CurLaunchCoolTime > DPlayer.LaunchCoolTime) {
 			GetGame()->GetPBullets()->Launch(DPlayer.Pos, DPlayer.LaunchVec);
 			DPlayer.CurLaunchCoolTime = 0;
 			playSound(DPlayer.ShootSound);
 		}
+		DPlayer.TriggerCooltime = DPlayer.InitTriggerCoolTime;
 	}
 	else {
 		DPlayer.CurLaunchCoolTime = DPlayer.LaunchCoolTime;
+		DPlayer.TriggerCooltime -= delta;
 	}
 }
 
@@ -103,8 +119,8 @@ void Player::Collision()
 				i = 0;
 			}
 		}
-		Bullets* bullets[Game::Etype_num];
-		for (int j = 0; j < Game::Etype_num;j++) {
+		Bullets* bullets[Game::EType_num];
+		for (int j = 0; j < Game::EType_num;j++) {
 			
 			bullets[j] = GetGame()->GetEBullets(j);
 			distance = DPlayer.BcRadius + bullets[j]->GetBcRadius();
@@ -139,6 +155,8 @@ void Player::Draw()
 	circle(DPlayer.Pos.x, DPlayer.Pos.y+DPlayer.CollisionOffSetY, DPlayer.BcRadius*2);
 	fill(255);
 	print(DPlayer.Hp);
+	print(DPlayer.UltPoint);
+
 }
 
 void Player::SaveData()

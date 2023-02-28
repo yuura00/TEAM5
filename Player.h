@@ -18,16 +18,23 @@ public:
         VECTOR2 Pos;
         VECTOR2 LaunchVec;
         float CollisionOffSetY;
+        int Hp;
         float Speed;
+        int Damage;
         float HalfSizeW;
         float HalfSizeH;
         float BcRadius;
-        int Hp;
+        float InitTriggerCoolTime;
+        float TriggerCooltime;
         float LaunchCoolTime;
         float CurLaunchCoolTime;
         float InvincibleRestTime;
         float InvincibleTime;
         float UltPoint;
+        float UltChargeSp;
+        float CurUltDeltaTime;
+        float MaxUltPoint;
+
     };
 
 private:
@@ -37,7 +44,8 @@ private:
 public:
     Player(class Game* game);
     ~Player();
-    void Create();
+    void SetData(const Data& data);
+    virtual void Create();
     void Init();
     void Update();
     void Move();
@@ -49,6 +57,6 @@ public:
     
     VECTOR2 GetPos() { return DPlayer.Pos; }
     int GetHp() { return DPlayer.Hp; }
-    
+    int GetDmg() { return DPlayer.Damage; }
 };
 

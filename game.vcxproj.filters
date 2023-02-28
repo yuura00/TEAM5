@@ -91,7 +91,15 @@
     <ClCompile Include="Enemy_bullets_no2.cpp">
       <Filter>Actor\Bullet</Filter>
     </ClCompile>
-    <ClCompile Include="Boss_bullets.cpp" />
+    <ClCompile Include="Boss_bullets.cpp">
+      <Filter>Actor\Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="Player_no1.cpp" />
+    <ClCompile Include="Player_no2.cpp" />
+    <ClCompile Include="Player_no3.cpp" />
+    <ClCompile Include="Select_machine.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="resource.rc">
@@ -162,6 +170,14 @@
     <ClInclude Include="Enemy_bullets_no2.h">
       <Filter>Actor\Bullet</Filter>
     </ClInclude>
-    <ClInclude Include="Boss_bullets.h" />
+    <ClInclude Include="Boss_bullets.h">
+      <Filter>Actor\Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="Player_no1.h" />
+    <ClInclude Include="Player_no2.h" />
+    <ClInclude Include="Player_no3.h" />
+    <ClInclude Include="Select_machine.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

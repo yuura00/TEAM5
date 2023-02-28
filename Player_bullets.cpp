@@ -8,5 +8,5 @@ Player_bullets::Player_bullets(Game* game)
 
 void Player_bullets::Create()
 {
-	SetBulletData(GetGame()->GetContainer()->GetData().playerBullet);
+ 	SetBulletData(GetGame()->GetContainer()->GetData().playerBullet);
 }

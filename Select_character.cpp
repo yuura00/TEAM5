@@ -50,8 +50,9 @@ void Select_character::Draw()
 void Select_character::NextScene()
 {
 	if (isTrigger(KEY_SPACE)) {
+		GetGame()->SetCharaNum(DSChara.SelectSw);
 		playSound(DSChara.DecisionSound);
-		GetGame()->ChangeScene(GetGame()->EPlaying);
+		GetGame()->ChangeScene(GetGame()->ESMachine);
 	}
 	if (isTrigger(KEY_P)) {
 		playSound(DSChara.DecisionSound);

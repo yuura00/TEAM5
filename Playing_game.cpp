@@ -12,8 +12,9 @@ void Playing_game::Create()
 {
 	DPlayingGame = GetGame()->GetContainer()->GetData().playingGame;
 	
+	GetGame()->GetPBullets()->Create();
 	GetGame()->GetPlayer()->Create();
-	for (int i = 0; i < Game::Etype_num; i++) {
+	for (int i = 0; i < Game::EType_num; i++) {
 		GetGame()->GetEBullets(i)->Create();
 	}
 	
@@ -46,7 +47,7 @@ void Playing_game::Init()
 
 	GetGame()->GetPBullets()->Init();
 
-	for (int i = 0; i < Game::Etype_num; i++) {
+	for (int i = 0; i < Game::EType_num; i++) {
 		GetGame()->GetEBullets(i)->Init();
 	}
 	GetGame()->GetBBullets()->Init();
@@ -81,7 +82,7 @@ void Playing_game::Update()
 	
 	GetGame()->GetPBullets()->Update();
 	
-	for (int i = 0; i < Game::Etype_num; i++) {
+	for (int i = 0; i < Game::EType_num; i++) {
 		GetGame()->GetEBullets(i)->Update();
 	}
 	GetGame()->GetBBullets()->Update();
@@ -91,7 +92,7 @@ void Playing_game::Update()
 void Playing_game::Draw()
 {
 	clear();
-	print(GetGame()->GetMap()->GetWorldY());
+	//print(GetGame()->GetMap()->GetWorldY());
 	//actor
 	GetGame()->GetMap()->Draw();
 	GetGame()->GetPlayer()->Draw();
@@ -108,7 +109,7 @@ void Playing_game::Draw()
 	//bullet
 	GetGame()->GetPBullets()->Draw();
 
-	for (int i = 0; i < Game::Etype_num; i++) {
+	for (int i = 0; i < Game::EType_num; i++) {
 		GetGame()->GetEBullets(i)->Draw();
 	}
 	GetGame()->GetBBullets()->Draw();

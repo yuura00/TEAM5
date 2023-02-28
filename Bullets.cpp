@@ -55,8 +55,8 @@ void Bullets::Update()
 		//ウィンドウの外に出たら
 		if (PBullets[i].Pos.y < -PBullet.BcRadius ||
 			PBullets[i].Pos.y > height +PBullet.BcRadius ||
-			PBullets[i].Pos.x < -PBullet.BcRadius ||
-			PBullets[i].Pos.x > width + PBullet.BcRadius
+			PBullets[i].Pos.x < GetGame()->GetMap()->GetStageX() - PBullet.BcRadius ||
+			PBullets[i].Pos.x > (width-GetGame()->GetMap()->GetStageX()) + PBullet.BcRadius
 			) {
 			Kill(i);
 		}

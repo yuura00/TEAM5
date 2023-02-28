@@ -126,7 +126,7 @@ void Enemy::Collision()
 		enemyPos.y -= DEnemy.CollisionOffSetY;
 		VECTOR2 vec = enemyPos - bullets->GetPos(j);
 		if (vec.sqMag() < sqDistance) {
-			DEnemy.Hp -= bullets->GetDamage();
+			DEnemy.Hp -= GetGame()->GetPlayer()->GetDmg();
 			DEnemy.Color = DEnemy.DamageColor;
 
 			bullets->Kill(j);
@@ -141,7 +141,7 @@ void Enemy::Draw()
 	angleMode(DEGREES);
 	image(DEnemy.img, DEnemy.Pos.x, DEnemy.Pos.y, DEnemy.angle);
 	fill(DEnemy.Color.r, DEnemy.Color.g, DEnemy.Color.b, 125);
-	circle(DEnemy.Pos.x, DEnemy.Pos.y+DEnemy.CollisionOffSetY, DEnemy.BcRadius * 2);
+	//circle(DEnemy.Pos.x, DEnemy.Pos.y+DEnemy.CollisionOffSetY, DEnemy.BcRadius * 2);
 	//print(DEnemy.Hp);
 	//print(DEnemy.Pos.y);
 }
