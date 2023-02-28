@@ -79,7 +79,7 @@ void Container::Set_data()
 	Data.player[0].CollisionOffSetY = 0;
 	Data.player[0].LaunchVec = VECTOR2 (0, -1);
 	Data.player[0].Hp = 500;
-	Data.player[0].Speed = 250;
+	Data.player[0].Speed = 200;
 	Data.player[0].Damage = 150;
 	Data.player[0].HalfSizeW = 96/2.0f;
 	Data.player[0].HalfSizeH = 96/2.0f;
@@ -91,7 +91,7 @@ void Container::Set_data()
 	Data.player[0].InvincibleTime = 0.5f;
 	Data.player[0].InvincibleRestTime = Data.player[0].InvincibleTime;
 	Data.player[0].UltPoint = 0;
-	Data.player[0].UltChargeSp = 2.0f;
+	Data.player[0].UltChargeSp = 1.0f;
 	Data.player[0].MaxUltPoint = 100;
 	Data.player[0].CurUltDeltaTime = 0;
 
@@ -102,19 +102,19 @@ void Container::Set_data()
 	Data.player[1].CollisionOffSetY = 5;
 	Data.player[1].LaunchVec = VECTOR2(0, -1);
 	Data.player[1].Hp = 300;
-	Data.player[1].Speed = 400;
+	Data.player[1].Speed = 300;
 	Data.player[1].Damage = 100;
 	Data.player[1].HalfSizeW = 96 / 2.0f;
 	Data.player[1].HalfSizeH = 96 / 2.0f;
 	Data.player[1].BcRadius = 96 / 2.0f-5;
-	Data.player[1].LaunchCoolTime = 0.3f;
+	Data.player[1].LaunchCoolTime = 0.35f;
 	Data.player[1].CurLaunchCoolTime = 0;
 	Data.player[1].TriggerCooltime = 0;
 	Data.player[1].InitTriggerCoolTime = Data.player[1].LaunchCoolTime;
 	Data.player[1].InvincibleTime = 0.5f;
 	Data.player[1].InvincibleRestTime = Data.player[1].InvincibleTime;
 	Data.player[1].UltPoint = 0;
-	Data.player[1].UltChargeSp = 2.0f;
+	Data.player[1].UltChargeSp = 1.0f;
 	Data.player[1].MaxUltPoint = 100;
 	Data.player[1].CurUltDeltaTime = 0;
 
@@ -125,24 +125,24 @@ void Container::Set_data()
 	Data.player[2].CollisionOffSetY = 12;
 	Data.player[2].LaunchVec = VECTOR2(0, -1);
 	Data.player[2].Hp = 100;
-	Data.player[2].Speed = 500;
-	Data.player[2].Damage = 70;
+	Data.player[2].Speed = 450;
+	Data.player[2].Damage = 50;
 	Data.player[2].HalfSizeW = 96 / 2.0f;
 	Data.player[2].HalfSizeH = 96 / 2.0f;
 	Data.player[2].BcRadius = 96 / 2.0f - 10;
 	Data.player[2].TriggerCooltime = 0;
-	Data.player[2].LaunchCoolTime = 0.15f;
+	Data.player[2].LaunchCoolTime = 0.2f;
 	Data.player[2].CurLaunchCoolTime = 0;
 	Data.player[2].InitTriggerCoolTime = Data.player[2].LaunchCoolTime;
 	Data.player[2].InvincibleTime = 0.5f;
 	Data.player[2].InvincibleRestTime = Data.player[2].InvincibleTime;
 	Data.player[2].UltPoint = 0;
-	Data.player[2].UltChargeSp = 2.0f;
+	Data.player[2].UltChargeSp = 1.0f;
 	Data.player[2].MaxUltPoint = 100;
 	Data.player[2].CurUltDeltaTime = 0;
 
 	Data.playerBullet.ImgSize = 0.5f;
-	Data.playerBullet.TotalNum = 1000;
+	Data.playerBullet.TotalNum = 100;
 	Data.playerBullet.CurNum = 0;
 	Data.playerBullet.Damage = 100;
 	Data.playerBullet.AdvSpeed = 400;
@@ -151,14 +151,16 @@ void Container::Set_data()
 	Data.playerBullet.LaunchDistance = 35;
 
 	//chara
+	//khael
 	Data.chara[0].Hp = 20; 
 	Data.chara[0].Speed = 20; 
 	Data.chara[0].Damage = 50;
-
+	Data.chara[0].UltTime = 10.0f;
+	//beryl
 	Data.chara[1].Hp = 200;
 	Data.chara[1].Speed = 0;
 	Data.chara[1].Damage = 20;
-
+	//harp
 	Data.chara[2].Hp = 70;
 	Data.chara[2].Speed = 70;
 	Data.chara[2].Damage = 20;
@@ -174,14 +176,14 @@ void Container::Set_data()
 	Data.enemy[0].Vec = VECTOR2(0, 0);
 	Data.enemy[0].LaunchVec = VECTOR2(0, 1);
 	Data.enemy[0].BcRadius = 35;
-	Data.enemy[0].Hp = 300;
+	Data.enemy[0].Hp = 350;
 	Data.enemy[0].HalfSizeW = 50 / 2.0f;
 	Data.enemy[0].HalfSizeH = 50 / 2.0f;
 	Data.enemy[0].Speed = 200;
 	Data.enemy[0].MovingTime = 0;
 	Data.enemy[0].MovingCoolTime = 0;
 	Data.enemy[0].CurMovingCoolTime = 0;
-	Data.enemy[0].LaunchCoolTime = 0.7f;
+	Data.enemy[0].LaunchCoolTime = 0.5f;
 	Data.enemy[0].CurLaunchCoolTime = 0;
 
 	Data.enemy[1].EnemyType = 1;
@@ -228,8 +230,8 @@ void Container::Set_data()
 	Data.enemyBullet[0].ImgSize = 0.5f;
 	Data.enemyBullet[0].TotalNum = 10;
 	Data.enemyBullet[0].CurNum = 0;
-	Data.enemyBullet[0].Damage = 15;
-	Data.enemyBullet[0].AdvSpeed = 350;
+	Data.enemyBullet[0].Damage = 20;
+	Data.enemyBullet[0].AdvSpeed = 400;
 	Data.enemyBullet[0].AngSpeed = 0;
 	Data.enemyBullet[0].BcRadius = 3.0f;
 	Data.enemyBullet[0].LaunchDistance = 35;
@@ -238,8 +240,8 @@ void Container::Set_data()
 	Data.enemyBullet[1].ImgSize = 0.5f;
 	Data.enemyBullet[1].TotalNum = 5;
 	Data.enemyBullet[1].CurNum = 0;
-	Data.enemyBullet[1].Damage = 8;
-	Data.enemyBullet[1].AdvSpeed = 500;
+	Data.enemyBullet[1].Damage = 10;
+	Data.enemyBullet[1].AdvSpeed = 600;
 	Data.enemyBullet[1].AngSpeed = 0;
 	Data.enemyBullet[1].BcRadius = 3.0f;
 	Data.enemyBullet[1].LaunchDistance = 35;
@@ -254,8 +256,8 @@ void Container::Set_data()
 	Data.boss.Vec = VECTOR2(0, 0);
 	Data.boss.LaunchVec = VECTOR2(0, 1);
 	Data.boss.BcRadius = 192/2.0f;
-	Data.boss.Hp = 3000;
-	Data.boss.Speed = 30;
+	Data.boss.Hp = 5000;
+	Data.boss.Speed = 50;
 	Data.boss.MovingTime = 0;
 	Data.boss.MovingCoolTime = 0;
 	Data.boss.CurMovingCoolTime = 0;
@@ -281,6 +283,9 @@ void Container::Load_graphic()
 	Data.player[0].Img = loadImage("assets\\Player1.png");
 	Data.player[1].Img = loadImage("assets\\Player2.png");
 	Data.player[2].Img = loadImage("assets\\Player3.png");
+	Data.player[0].UltImg = loadImage("assets\\ult_effect_01.png");
+	Data.player[1].UltImg = Data.player[0].UltImg;
+	Data.player[2].UltImg = Data.player[0].UltImg;
 	Data.GameClearImg = loadImage("assets\\GameClear.png");
 	Data.GameOverImg = loadImage("assets\\GameOver.png");
 	

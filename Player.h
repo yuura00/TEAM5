@@ -8,6 +8,7 @@ public:
     bool CheckError = false;
     struct Data {
         int Img = 0;
+        int UltImg = 0;
         float Angle = 0;
         int ShootSound = 0;
 
@@ -34,7 +35,9 @@ public:
         float UltChargeSp;
         float CurUltDeltaTime;
         float MaxUltPoint;
-
+        float UltTime;
+        bool UltFlag = false;
+        bool UltTimeFlag = false;
     };
 
 private:
@@ -57,6 +60,9 @@ public:
     
     VECTOR2 GetPos() { return DPlayer.Pos; }
     int GetHp() { return DPlayer.Hp; }
-    int GetDmg() { return DPlayer.Damage; }
+    int GetDmg() { return DPlayer.Damage;}
+    int GetUltP() { return DPlayer.UltPoint; }
+    void AddUltP(int i) { DPlayer.UltPoint += i; }
+    bool GetUltFlag() { return DPlayer.UltFlag; }
 };
 

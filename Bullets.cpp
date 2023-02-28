@@ -70,7 +70,7 @@ void Bullets::Draw()
 	for (int i = 0; i < PBullet.CurNum; i++) {
 		image(PBullet.Img,PBullets[i].Pos.x,PBullets[i].Pos.y,0,PBullet.ImgSize);
  	}
-	print( PBullet.CurNum);
+	//print( PBullet.CurNum);
 }
 
 void Bullets::Kill(int i)

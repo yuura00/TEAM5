@@ -114,6 +114,14 @@ void Playing_game::Draw()
 	}
 	GetGame()->GetBBullets()->Draw();
 
+	//UI
+	textSize(50);
+	fill(255);
+	text("HP:", 70, 100);
+	text(GetGame()->GetPlayer()->GetHp(),170 , 100);
+	text("ULTIMATE:", 70, 200);
+	text(GetGame()->GetPlayer()->GetUltP(), 340, 200);
+	text(GetGame()->GetPlayer()->GetDmg(),70,height/2+100);
 }
 
 

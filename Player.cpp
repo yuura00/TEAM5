@@ -32,12 +32,13 @@ void Player::Init()
 	int cHp = GetGame()->GetContainer()->GetData().chara[GetGame()->GetCharaNum()].Hp;
 	int cSp = GetGame()->GetContainer()->GetData().chara[GetGame()->GetCharaNum()].Speed;
 	int cDmg = GetGame()->GetContainer()->GetData().chara[GetGame()->GetCharaNum()].Damage;
+	
 
 	DPlayer.Pos =p.Pos;
 	DPlayer.Hp = p.Hp+cHp;
 	DPlayer.Speed = p.Speed + cSp;
-	DPlayer.Damage = p.Speed + cDmg;
-	
+	DPlayer.Damage = p.Damage + cDmg;
+	DPlayer.UltTime = GetGame()->GetContainer()->GetData().chara[GetGame()->GetCharaNum()].UltTime;
 }
 
 void Player::Update()
@@ -50,9 +51,30 @@ void Player::Update()
 	Collision();
 	DPlayer.CurUltDeltaTime += delta;
 	if (DPlayer.UltChargeSp <= DPlayer.CurUltDeltaTime) {
-		DPlayer.UltPoint++;
-		DPlayer.CurUltDeltaTime = 0;
+		if (DPlayer.UltPoint < 100) {
+			DPlayer.UltPoint++;
+			DPlayer.CurUltDeltaTime = 0;
+		}
 	}
+	if (DPlayer.UltPoint == 100&&isTrigger(KEY_R)) {
+		DPlayer.UltFlag = true;
+	}
+	//beryl ult
+	if (DPlayer.UltFlag == true) {
+		
+		DPlayer.UltPoint = 0;
+		DPlayer.UltTimeFlag = true;
+		DPlayer.UltFlag = false;
+	}
+	if (DPlayer.UltTimeFlag == true) {
+		DPlayer.UltTime-=delta;
+		if (DPlayer.UltTime <= 0) {
+			
+			DPlayer.UltTime = GetGame()->GetContainer()->GetData().chara[GetGame()->GetCharaNum()].UltTime;
+			DPlayer.UltTimeFlag = false;
+		}
+	}
+
 	
 }
 
@@ -154,8 +176,12 @@ void Player::Draw()
 	fill(125, 125, 125, 100);
 	circle(DPlayer.Pos.x, DPlayer.Pos.y+DPlayer.CollisionOffSetY, DPlayer.BcRadius*2);
 	fill(255);
-	print(DPlayer.Hp);
-	print(DPlayer.UltPoint);
+	if (DPlayer.UltTimeFlag == true) {
+		image(DPlayer.UltImg, DPlayer.Pos.x, DPlayer.Pos.y);
+	}
+	//print(DPlayer.Hp);
+	print(DPlayer.LaunchCoolTime);
+	//print(DPlayer.UltPoint);
 
 }
 

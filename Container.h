@@ -19,6 +19,7 @@ private:
         int Hp;
         float Speed;
         int Damage;
+        float UltTime;
     };
     struct ALL_DATA {
         Title::Data title;

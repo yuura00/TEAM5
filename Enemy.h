@@ -15,7 +15,7 @@ public:
     struct Data {
         int EnemyType;
         int img = 0;
-        float angle = 180;
+        float angle = 0;
         
         COLOR Color;
         COLOR NormalColor;
