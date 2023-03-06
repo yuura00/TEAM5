@@ -165,7 +165,7 @@ void Container::Set_data()
 	Data.chara[2].Hp = 70;
 	Data.chara[2].Speed = 70;
 	Data.chara[2].Damage = 20;
-	Data.chara[2].UltTime = 7.0f;
+	Data.chara[2].UltTime = 3.0f;
 
 	//enemy
 	Data.enemy[0].EnemyType = 0;
