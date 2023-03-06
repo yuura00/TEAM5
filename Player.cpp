@@ -36,6 +36,7 @@ void Player::Init()
 
 	DPlayer.Pos =p.Pos;
 	DPlayer.Hp = p.Hp+cHp;
+	DPlayer.InitHp = p.Hp + cHp;
 	DPlayer.Speed = p.Speed + cSp;
 	DPlayer.Damage = p.Damage + cDmg;
 	DPlayer.UltTime = GetGame()->GetContainer()->GetData().chara[GetGame()->GetCharaNum()].UltTime;
@@ -48,7 +49,9 @@ void Player::Update()
 	}
 	Move();
 	Launch();
-	Collision();
+	if (DPlayer.UltTimeFlag == false || GetGame()->GetCharaNum()!=2) {
+		Collision();
+	}
 	DPlayer.CurUltDeltaTime += delta;
 	if (DPlayer.UltChargeSp <= DPlayer.CurUltDeltaTime) {
 		if (DPlayer.UltPoint < 100) {
@@ -56,12 +59,15 @@ void Player::Update()
 			DPlayer.CurUltDeltaTime = 0;
 		}
 	}
+	if (DPlayer.UltPoint > 100) {
+		DPlayer.UltPoint = 100;
+	}
 	if (DPlayer.UltPoint == 100&&isTrigger(KEY_R)) {
 		DPlayer.UltFlag = true;
 	}
 	//beryl ult
 	if (DPlayer.UltFlag == true) {
-		
+		CharaUlt(GetGame()->GetCharaNum());
 		DPlayer.UltPoint = 0;
 		DPlayer.UltTimeFlag = true;
 		DPlayer.UltFlag = false;
@@ -69,7 +75,6 @@ void Player::Update()
 	if (DPlayer.UltTimeFlag == true) {
 		DPlayer.UltTime-=delta;
 		if (DPlayer.UltTime <= 0) {
-			
 			DPlayer.UltTime = GetGame()->GetContainer()->GetData().chara[GetGame()->GetCharaNum()].UltTime;
 			DPlayer.UltTimeFlag = false;
 		}
@@ -180,7 +185,7 @@ void Player::Draw()
 		image(DPlayer.UltImg, DPlayer.Pos.x, DPlayer.Pos.y);
 	}
 	//print(DPlayer.Hp);
-	print(DPlayer.LaunchCoolTime);
+	//print(DPlayer.LaunchCoolTime);
 	//print(DPlayer.UltPoint);
 
 }
@@ -199,6 +204,27 @@ void Player::SetData()
 	}
 	else {
 		print("ERROR");
+	}
+}
+
+void Player::CharaUlt(int i)
+{
+	switch (i) {
+	case 0:
+		//increse 30 damage 
+		DPlayer.Damage += 30;
+		break;
+	case 1:
+		//cure hp 30%
+		DPlayer.Hp += (DPlayer.InitHp / 100) * 30;
+		if (DPlayer.Hp > DPlayer.InitHp) {
+			DPlayer.Hp = DPlayer.InitHp;
+		}
+		break;
+	case 2:
+		//avoid enemy attack
+		
+		break;
 	}
 }
 

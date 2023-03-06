@@ -6,6 +6,7 @@ class Player :
 {
 public:
     bool CheckError = false;
+    
     struct Data {
         int Img = 0;
         int UltImg = 0;
@@ -20,6 +21,7 @@ public:
         VECTOR2 LaunchVec;
         float CollisionOffSetY;
         int Hp;
+        int InitHp;
         float Speed;
         int Damage;
         float HalfSizeW;
@@ -57,6 +59,7 @@ public:
     void Draw();
     void SaveData();
     void SetData();
+    void CharaUlt(int i);
     
     VECTOR2 GetPos() { return DPlayer.Pos; }
     int GetHp() { return DPlayer.Hp; }
@@ -64,5 +67,6 @@ public:
     int GetUltP() { return DPlayer.UltPoint; }
     void AddUltP(int i) { DPlayer.UltPoint += i; }
     bool GetUltFlag() { return DPlayer.UltFlag; }
+
 };
 

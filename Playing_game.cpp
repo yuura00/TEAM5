@@ -69,6 +69,10 @@ void Playing_game::Update()
 			if (GetGame()->GetEnemy(i)->Life == true) {
 				DPlayingGame.KillCnt++;
 				GetGame()->GetEnemy(i)->Life = false;
+				if (GetGame()->GetPlayer()->GetUltP() < 100) {
+					GetGame()->GetPlayer()->AddUltP(5);
+				}
+				
 			}
 		}
 
@@ -98,7 +102,7 @@ void Playing_game::Draw()
 	GetGame()->GetPlayer()->Draw();
 	
 	for (int i = 0; i < Game::Enemy_num; i++) {
-		if (DPlayingGame.enemyHp[i] > 0 && DPlayingGame.enemyPosY[i] < height + 300) {
+		if (GetGame()->GetEnemy(i)->Life==true){
 			GetGame()->GetEnemy(i)->Draw();
 		}
 	}

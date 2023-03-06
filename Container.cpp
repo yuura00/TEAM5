@@ -155,15 +155,17 @@ void Container::Set_data()
 	Data.chara[0].Hp = 20; 
 	Data.chara[0].Speed = 20; 
 	Data.chara[0].Damage = 50;
-	Data.chara[0].UltTime = 10.0f;
+	Data.chara[0].UltTime = 5.0f;
 	//beryl
 	Data.chara[1].Hp = 200;
 	Data.chara[1].Speed = 0;
 	Data.chara[1].Damage = 20;
+	Data.chara[1].UltTime = 3.0f;
 	//harp
 	Data.chara[2].Hp = 70;
 	Data.chara[2].Speed = 70;
 	Data.chara[2].Damage = 20;
+	Data.chara[2].UltTime = 7.0f;
 
 	//enemy
 	Data.enemy[0].EnemyType = 0;
@@ -308,6 +310,8 @@ void Container::LoadSound()
 	Data.CursorSound = loadSound("sounds\\CursorMove.wav");
 	Data.DecisionSound= loadSound("sounds\\Decision.wav");
 	Data.player[0].ShootSound = loadSound("sounds\\PlayerShoot.wav");
+	Data.player[1].ShootSound = Data.player[0].ShootSound;
+	Data.player[2].ShootSound = Data.player[0].ShootSound;
 	Data.title.DecisionSound = Data.DecisionSound;
 	Data.title.CursorMoveSound = Data.CursorSound;
 	Data.sStage.CursorMoveSound = Data.CursorSound;

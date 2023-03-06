@@ -23,6 +23,9 @@
     <Filter Include="Actor\Enemy">
       <UniqueIdentifier>{5f4b220d-af0f-4f63-ad7f-1fb265be1eb6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Actor\Player">
+      <UniqueIdentifier>{2a743ca3-61f8-4b48-9afe-1cec0facd25d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -48,9 +51,6 @@
     </ClCompile>
     <ClCompile Include="Title.cpp">
       <Filter>Scene</Filter>
-    </ClCompile>
-    <ClCompile Include="Player.cpp">
-      <Filter>Actor</Filter>
     </ClCompile>
     <ClCompile Include="Playing_game.cpp">
       <Filter>Scene</Filter>
@@ -94,12 +94,22 @@
     <ClCompile Include="Boss_bullets.cpp">
       <Filter>Actor\Bullet</Filter>
     </ClCompile>
-    <ClCompile Include="Player_no1.cpp" />
-    <ClCompile Include="Player_no2.cpp" />
-    <ClCompile Include="Player_no3.cpp" />
     <ClCompile Include="Select_machine.cpp">
       <Filter>Scene</Filter>
     </ClCompile>
+    <ClCompile Include="Player_no3.cpp">
+      <Filter>Actor\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Player_no2.cpp">
+      <Filter>Actor\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Player_no1.cpp">
+      <Filter>Actor\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Actor\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Item.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="resource.rc">
@@ -127,9 +137,6 @@
     </ClInclude>
     <ClInclude Include="Title.h">
       <Filter>Scene</Filter>
-    </ClInclude>
-    <ClInclude Include="Player.h">
-      <Filter>Actor</Filter>
     </ClInclude>
     <ClInclude Include="Pause_game.h">
       <Filter>Scene</Filter>
@@ -173,11 +180,21 @@
     <ClInclude Include="Boss_bullets.h">
       <Filter>Actor\Bullet</Filter>
     </ClInclude>
-    <ClInclude Include="Player_no1.h" />
-    <ClInclude Include="Player_no2.h" />
-    <ClInclude Include="Player_no3.h" />
     <ClInclude Include="Select_machine.h">
       <Filter>Scene</Filter>
     </ClInclude>
+    <ClInclude Include="Player_no2.h">
+      <Filter>Actor\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Player_no1.h">
+      <Filter>Actor\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Player_no3.h">
+      <Filter>Actor\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Actor\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Item.h" />
   </ItemGroup>
 </Project>
